@@ -1,7 +1,8 @@
-Usage
+Scenarios
 =====
 
-.. _installation:
+
+here are some main user flows in clinicult system
 
 Installation
 ------------
@@ -16,7 +17,7 @@ Creating recipes
 ----------------
 
 To retrieve a list of random ingredients,
-you can use the ``user.get_random_ingredients()`` function:
+you can use the ``lumache.get_random_ingredients()`` function:
 
 .. autofunction:: lumache.get_random_ingredients
 

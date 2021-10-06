@@ -1,22 +1,27 @@
-Welcome to Lumache's documentation!
+Welcome to Clinicult New-Gen documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**Clinicult** is a Electric Medical Records application.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Demo system on `Clinicult Test System <https://env-test.test.clinicult.net/>`_
+
+Backoffice site on `Admin system <https://env-test.api.test.clinicult.net/>`_
+
+
+
+
+Check out the :doc:`scenarios` section for all User stories
 
 .. note::
 
-   This project is under active development.
+   This project is new generation for clinicult version 1. `Documentation <https://clinikal-documentation.readthedocs.io/>`_  is availble.
+  
 
 Contents
 --------
 
 .. toctree::
 
+   scenarios
    usage
    api

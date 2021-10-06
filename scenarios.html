@@ -40,7 +40,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scenarios</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client-on-boarding">Client on-boarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-recipes">Creating recipes</a></li>
 </ul>
 </li>
@@ -75,9 +75,12 @@
   <div class="section" id="scenarios">
 <h1>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this headline">¶</a></h1>
 <p>here are some main user flows in clinicult system</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>To use Lumache, first install it using pip:</p>
+<div class="section" id="client-on-boarding">
+<h2>Client on-boarding<a class="headerlink" href="#client-on-boarding" title="Permalink to this headline">¶</a></h2>
+<p>This scenario describe the acceptance of new customer to the clinic. in this flow we have two options:
+one case is that user already exists in clinic data, and the second one is the patient is new.</p>
+<p>In both cases we will search for the Patient in the Search bar. if Patient exists, we can update his visit in the clinic.
+if Patient not exists in clinic data, we will have a form that add new Patient to our system, and after Patient added, we can update his visit.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$</span> pip install lumache
 </pre></div>
 </div>

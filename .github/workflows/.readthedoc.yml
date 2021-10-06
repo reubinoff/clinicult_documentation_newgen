@@ -13,15 +13,21 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "docs/"
-        pre-build-command: pip install -r docs/requirements.txt
 
-
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "docs2/"
+        build-command: "make pdf"
+   
+    - run: |
+        ls -l docs
+        find docs -type f
     - uses: actions/upload-artifact@v1
       with:
         name: DocumentationHTML
         path: docs/_build/html/
 
-
+    
     - name: Commit documentation changes
       run: |
         git clone https://github.com/reubinoff/clinicult_documentation_newgen.git --branch gh-pages --single-branch gh-pages

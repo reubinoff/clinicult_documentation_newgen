@@ -20,6 +20,7 @@
       Clinic
       Gender
       User
+      s
    
    
 

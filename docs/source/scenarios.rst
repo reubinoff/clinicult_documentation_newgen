@@ -4,10 +4,15 @@ Scenarios
 
 here are some main user flows in clinicult system
 
-Installation
+Client on-boarding
 ------------
 
-To use Lumache, first install it using pip:
+This scenario describe the acceptance of new customer to the clinic. in this flow we have two options:
+one case is that user already exists in clinic data, and the second one is the patient is new.
+
+In both cases we will search for the Patient in the Search bar. if Patient exists, we can update his visit in the clinic. 
+if Patient not exists in clinic data, we will have a form that add new Patient to our system, and after Patient added, we can update his visit.
+
 
 .. code-block:: console
 

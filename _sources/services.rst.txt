@@ -15,7 +15,7 @@ in addiiton to the user permissions (Role / Group), this services will store all
 The service will not store his login credentials. 
 all the tokens or credentials will be stored in the :ref:`sdsdsd <services/Services:Authentication Services>`
 
-see :ref:`installation`.
+see :ref:`data`.
 
 
 Authentication Service
@@ -34,7 +34,9 @@ another option is to serve the Client site with `AWS Amplify <https://aws.amazon
 
 Admin WEB Service
 '''''''''''''''''
-readthedocs
+This Services will serve the admin web client. same as the clinic web service.
+
+
 
 Visits Service
 '''''''''''''''''
@@ -52,6 +54,6 @@ _____
 Communication
 '''''''''''''''''
 
-.. _installation:
+.. _data:
 data
 '''''''''''''''''

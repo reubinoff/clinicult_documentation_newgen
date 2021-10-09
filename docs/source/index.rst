@@ -23,5 +23,6 @@ Contents
 .. toctree::
 
    scenarios
+   services
    usage
    models

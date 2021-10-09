@@ -16,7 +16,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="next" title="Security" href="security.html" />
     <link rel="prev" title="Scenarios" href="scenarios.html" /> 
 </head>
 
@@ -41,7 +41,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#outlet">Outlet</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user-service">User Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#authentication-service">Authentication Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clinic-web-service">Clinic WEB Service</a></li>
@@ -49,15 +49,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#admin-managment-services">Admin Managment Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#communication">Communication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data">data</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 </ul>
@@ -90,8 +92,8 @@
 <h1>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h1>
 <p>In order to support high performance and simplicity Clinicult 2.0 will be developed as micro-services architecture.
 each service will has his own purpose and his own data.</p>
-<div class="section" id="id1">
-<h2>Services<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="outlet">
+<h2>Outlet<a class="headerlink" href="#outlet" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="user-service">
 <h3>User Service<a class="headerlink" href="#user-service" title="Permalink to this headline">¶</a></h3>
 <p>This service will store all the information on the User that use the system.the information will include also the user permissions.
@@ -131,14 +133,20 @@ in this case when Patient is in servies now, the historic visits will be served 
 for example, if we will need to create Mediacal file, Most of the data on the patient will be taken from this service.</p>
 <p>In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the <a class="reference internal" href="#visits-service"><span class="std std-ref">Visits Service</span></a>.</p>
 </div>
+<div class="section" id="api-gateway">
+<h3>API gateway<a class="headerlink" href="#api-gateway" title="Permalink to this headline">¶</a></h3>
+<p>API service that route all requests in the platform to his relevant service.
+the main reason to hold this service is that the only way to get into out platform is only threw this service.
+more information about it you can find in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter</p>
+</div>
 </div>
 <div class="section" id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="communication">
 <h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id2">
-<h3>data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="data">
+<h3>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -148,7 +156,7 @@ for example, if we will need to create Mediacal file, Most of the data on the pa
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="scenarios.html" class="btn btn-neutral float-left" title="Scenarios" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="security.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

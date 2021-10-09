@@ -24,5 +24,6 @@ Contents
 
    scenarios
    services
+   security
    usage
    models

@@ -46,6 +46,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#authentication-service">Authentication Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clinic-web-service">Clinic WEB Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#admin-web-service">Admin WEB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-managment-services">Admin Managment Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
 </ul>
@@ -96,8 +97,7 @@ each service will has his own purpose and his own data.</p>
 <p>This service will store all the information on the User that use the system.the information will include also the user permissions.
 in addiiton to the user permissions (Role / Group), this services will store all the personal information. for example phone or mail.</p>
 <p>The service will not store his login credentials.
-all the tokens or credentials will be stored in the <span class="xref std std-ref">sdsdsd</span></p>
-<p>see <span class="xref std std-ref">data</span>.</p>
+all the tokens or credentials will be stored in the <span class="xref std std-ref">Authentication Services</span></p>
 </div>
 <div class="section" id="authentication-service">
 <h3>Authentication Service<a class="headerlink" href="#authentication-service" title="Permalink to this headline">¶</a></h3>
@@ -112,6 +112,10 @@ for example: <a class="reference external" href="https://auth0.com/">Auth0</a></
 <div class="section" id="admin-web-service">
 <h3>Admin WEB Service<a class="headerlink" href="#admin-web-service" title="Permalink to this headline">¶</a></h3>
 <p>This Services will serve the admin web client. same as the clinic web service.</p>
+</div>
+<div class="section" id="admin-managment-services">
+<h3>Admin Managment Services<a class="headerlink" href="#admin-managment-services" title="Permalink to this headline">¶</a></h3>
+<p>This server will host all the API and queries that the admin clinet needs. the main idea is that this server will not hold data at all, and will just proxy the requests to other services.</p>
 </div>
 <div class="section" id="visits-service">
 <h3>Visits Service<a class="headerlink" href="#visits-service" title="Permalink to this headline">¶</a></h3>

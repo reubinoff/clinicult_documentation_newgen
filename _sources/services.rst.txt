@@ -70,6 +70,13 @@ API service that route all requests in the platform to his relevant service.
 the main reason to hold this service is that the only way to get into out platform is only through this service.
 more information about it you can find in :doc:`security` chapter
 
+FHIR API
+-----------------
+All the API calls (that contain medical data) meet FHIR standard.
+The API is written in `FHIR V4 standard <https://www.hl7.org/fhir/http.html>`_.
+
+
+
 ******************
 Architecture
 ******************
@@ -78,6 +85,7 @@ Architecture
 Communication
 ==================
 In Clinicut 2.0 we will have couple of communication channels:
+
 #. User client to the platform services
 #. Admin client to the platform servies
 #. Between the platform services
@@ -104,6 +112,7 @@ the meaning of that each service has his own data, is if we need to have API tha
 Cache
 ==================
 Caching will be ready to serve the services. option for caches:
+
 #. `Redis <https://redis.io/>`_
 #. `AWS Elastic Cache <https://www.google.com/aclk?sa=L&ai=DChcSEwibgdTWyb3zAhVS53cKHRlUDlYYABAAGgJlZg&ae=2&sig=AOD64_3eWIyBu6dtM602se28yrqiAz9lgg&q&adurl&ved=2ahUKEwj_kcvWyb3zAhVLDewKHSKAB-kQ0Qx6BAgCEAE>`_
 

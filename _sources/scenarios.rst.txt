@@ -4,7 +4,9 @@ Scenarios
 
 
 
-here are some main user flows in clinicult system
+here are some main user flows in clinicult system.
+
+more detailed scenarios located on `Prev Dcoumentation <https://clinikal-documentation.readthedocs.io/en/latest/product_desc/emergency_product_desc_hebrew.pdf>`_
 
 ******************
 Client on-boarding

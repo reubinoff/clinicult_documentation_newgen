@@ -49,7 +49,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#admin-management-services">Admin Management Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fhir-api">FHIR API</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
@@ -63,6 +66,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 </ul>
@@ -146,16 +150,23 @@ for example, if we will need to create medical file, Most of the data on the pat
 <p>API service that route all requests in the platform to his relevant service.
 the main reason to hold this service is that the only way to get into out platform is only through this service.
 more information about it you can find in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter</p>
+<div class="section" id="fhir-api">
+<h4>FHIR API<a class="headerlink" href="#fhir-api" title="Permalink to this headline">¶</a></h4>
+<p>All the API calls (that contain medical data) meet FHIR standard.
+The API is written in <a class="reference external" href="https://www.hl7.org/fhir/http.html">FHIR V4 standard</a>.</p>
+</div>
 </div>
 </div>
 <div class="section" id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="communication">
 <h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
-<p>In Clinicut 2.0 we will have couple of communication channels:
-#. User client to the platform services
-#. Admin client to the platform servies
-#. Between the platform services</p>
+<p>In Clinicut 2.0 we will have couple of communication channels:</p>
+<ol class="arabic simple">
+<li><p>User client to the platform services</p></li>
+<li><p>Admin client to the platform servies</p></li>
+<li><p>Between the platform services</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>API client is not relevant at this stage</p>
@@ -173,9 +184,11 @@ the meaning of that each service has his own data, is if we need to have API tha
 </div>
 <div class="section" id="cache">
 <h3>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h3>
-<p>Caching will be ready to serve the services. option for caches:
-#. <a class="reference external" href="https://redis.io/">Redis</a>
-#. <a class="reference external" href="https://www.google.com/aclk?sa=L&amp;ai=DChcSEwibgdTWyb3zAhVS53cKHRlUDlYYABAAGgJlZg&amp;ae=2&amp;sig=AOD64_3eWIyBu6dtM602se28yrqiAz9lgg&amp;q&amp;adurl&amp;ved=2ahUKEwj_kcvWyb3zAhVLDewKHSKAB-kQ0Qx6BAgCEAE">AWS Elastic Cache</a></p>
+<p>Caching will be ready to serve the services. option for caches:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://redis.io/">Redis</a></p></li>
+<li><p><a class="reference external" href="https://www.google.com/aclk?sa=L&amp;ai=DChcSEwibgdTWyb3zAhVS53cKHRlUDlYYABAAGgJlZg&amp;ae=2&amp;sig=AOD64_3eWIyBu6dtM602se28yrqiAz9lgg&amp;q&amp;adurl&amp;ved=2ahUKEwj_kcvWyb3zAhVLDewKHSKAB-kQ0Qx6BAgCEAE">AWS Elastic Cache</a></p></li>
+</ol>
 <p>In both case the idea is to store only temporary data and not persistant. means that each data that stored in cache, can be clear and this will not impcat the system with data loss.
 Example, the last patients’ historic visits in the clinic.</p>
 <div class="admonition note">

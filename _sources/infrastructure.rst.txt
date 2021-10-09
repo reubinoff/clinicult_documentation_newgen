@@ -5,9 +5,28 @@ Infrastructure
 infrastructureinfrastructureinfrastructureinfrastructureinfrastructure
 
 ******************
-infrastructureA
+Kubernetes
 ******************
 
-infrastructureAS
+
+******************
+AWS
+******************
+S3
 ==================
-xcxc
+EKS
+==================
+ECR
+==================
+
+******************
+Source Control
+******************
+
+******************
+Continous Integration
+******************
+
+******************
+Continous Deployment
+******************

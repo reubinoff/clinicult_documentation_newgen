@@ -44,6 +44,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Infrastructure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#aws">AWS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terraform">Terraform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#s3">S3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecs">ECS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecr">ECR</a></li>
@@ -122,11 +123,34 @@ in addition the image will have option to read alot of other values from Environ
 </div>
 <div class="section" id="aws">
 <h2>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="terraform">
+<h3>Terraform<a class="headerlink" href="#terraform" title="Permalink to this headline">¶</a></h3>
+<p>Aws services will be managed by <a class="reference external" href="https://www.terraform.io/">Terraform project</a>.</p>
+<p>In our Account we will have 3 seperated environments:</p>
+<ol class="arabic simple">
+<li><p>development - will be used during the development stage</p></li>
+<li><p>staging - for latest test before upgrading the production, or to test Beta versions</p></li>
+<li><p>production - production Environment</p></li>
+</ol>
+<p>All the Environments will be <strong>identical</strong>!.</p>
+<p>The deployment will be with terraform scripts. that each change will be only can modified from terraform. the changes will be applied manually only. CI for terraform scripts will just check validation of the scripts.
+Terraform will save his environment state on S3.</p>
+<p>In addition to the product environments, Terraform will also apllied usful lambda functions to help during the deployment stage. for example, Lambda function that update ECS clusters with new version uploaded.</p>
+<p>Another imprtant example for lambda function is to deploy new cluster (aka new Clinic) on ECS.</p>
+</div>
 <div class="section" id="s3">
 <h3>S3<a class="headerlink" href="#s3" title="Permalink to this headline">¶</a></h3>
+<p>Each service in the cluster will have the option to get access to S3.
+Clinicult 2.0 will have S3 storage per cluster (aka Clinic) the path in the S3 will idetify the relevant service.
+For example, Service visits, will write his data to</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">s3://&lt;clinic_name&gt;/visits</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="ecs">
 <h3>ECS<a class="headerlink" href="#ecs" title="Permalink to this headline">¶</a></h3>
+<p>Each Clinic in Clinicult 2.0 will A seperate cluster in ECS fargate. each service will be an ECS service in the cluster.
+for each Clinic will be a dedicated subnet in the environment VPC. this way, we will have 3 different VPCs, for development, staging and production. and each clinic will have seperate subnet in the VPC.</p>
 <p>Amazon Api Gateway may be integrated with ECS. more information may be found in <a class="reference external" href="https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/">this guide</a>.</p>
 </div>
 <div class="section" id="ecr">

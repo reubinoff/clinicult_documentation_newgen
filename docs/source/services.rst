@@ -6,7 +6,7 @@ In order to support high performance and simplicity Clinicult 2.0 will be develo
 each service will has his own purpose and his own data.
 
 ******************
-Services
+Outlet
 ******************
 
 User Service
@@ -60,6 +60,11 @@ for example, if we will need to create Mediacal file, Most of the data on the pa
 In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the :ref:`Visits Service`.
 
 
+API gateway
+==================
+API service that route all requests in the platform to his relevant service.
+the main reason to hold this service is that the only way to get into out platform is only threw this service.
+more information about it you can find in :doc:`security` chapter
 
 ******************
 Architecture
@@ -69,6 +74,7 @@ Architecture
 Communication
 ==================
 
-.. _data:
+
+
 data
 ==================

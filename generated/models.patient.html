@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>models.patient &mdash; Clinicult 0.1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="models.medical_file" href="models.medical_file.html" />
+    <link rel="prev" title="Models" href="../models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Clinicult
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../scenarios.html">Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../models.html">Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models.patient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.medical_file.html">models.medical_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.visit.html">models.visit</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Clinicult</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../models.html">Models</a> &raquo;</li>
+      <li>models.patient</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/models.patient.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-models.patient">
+<span id="models-patient"></span><h1>models.patient<a class="headerlink" href="#module-models.patient" title="Permalink to this headline">¶</a></h1>
+<p>Patient Module hold the Patient information</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#models.patient.Clinic" title="models.patient.Clinic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Clinic</span></code></a></p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#models.patient.Gender" title="models.patient.Gender"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gender</span></code></a></p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#models.patient.Patient" title="models.patient.Patient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Patient</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="models.patient.Gender">
+<em class="property">class </em><code class="sig-prename descclassname">models.patient.</code><code class="sig-name descname">Gender</code><a class="headerlink" href="#models.patient.Gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="models.patient.Gender.male">
+<code class="sig-name descname">male</code><em class="property"> = 1</em><a class="headerlink" href="#models.patient.Gender.male" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Gender.female">
+<code class="sig-name descname">female</code><em class="property"> = 2</em><a class="headerlink" href="#models.patient.Gender.female" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Gender.other">
+<code class="sig-name descname">other</code><em class="property"> = 3</em><a class="headerlink" href="#models.patient.Gender.other" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="models.patient.Clinic">
+<em class="property">class </em><code class="sig-prename descclassname">models.patient.</code><code class="sig-name descname">Clinic</code><a class="headerlink" href="#models.patient.Clinic" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="models.patient.Clinic.clalit">
+<code class="sig-name descname">clalit</code><em class="property"> = 1</em><a class="headerlink" href="#models.patient.Clinic.clalit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Clinic.maccabi">
+<code class="sig-name descname">maccabi</code><em class="property"> = 2</em><a class="headerlink" href="#models.patient.Clinic.maccabi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Clinic.other">
+<code class="sig-name descname">other</code><em class="property"> = 3</em><a class="headerlink" href="#models.patient.Clinic.other" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="models.patient.Patient">
+<em class="property">class </em><code class="sig-prename descclassname">models.patient.</code><code class="sig-name descname">Patient</code><a class="headerlink" href="#models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="models.patient.Patient.id">
+<code class="sig-name descname">id</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.first_name">
+<code class="sig-name descname">first_name</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.first_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.last_name">
+<code class="sig-name descname">last_name</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.last_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.gender">
+<code class="sig-name descname">gender</code><em class="property">: Gender</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.gender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.date_of_birth">
+<code class="sig-name descname">date_of_birth</code><em class="property">: datetime</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.date_of_birth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.personal_clinic">
+<code class="sig-name descname">personal_clinic</code><em class="property">: Clinic</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.personal_clinic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.cellphone">
+<code class="sig-name descname">cellphone</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.cellphone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.mail">
+<code class="sig-name descname">mail</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.mail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="models.patient.Patient.image">
+<code class="sig-name descname">image</code><em class="property">: any</em><em class="property"> = None</em><a class="headerlink" href="#models.patient.Patient.image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="models.medical_file.html" class="btn btn-neutral float-right" title="models.medical_file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Clinicult.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -43,11 +43,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#client-on-boarding">Client on-boarding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clinet-mediacal-file">Clinet Mediacal File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#patient-state-update">Patient state update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-recipes">Creating recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#medical-entity-dashboard">Medical entity dashboard</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 </ul>
 
         </div>
@@ -98,23 +98,11 @@ for example, at the begining, the patient will see the nurse. then he can move t
 <p>each state will be recorded and will update within his medical file.
 in addition, all those update will be stored in his visit event, and may be query later.
 Each medical update his medical file as mentioed before.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$</span> pip install lumache
-</pre></div>
 </div>
-</div>
-<div class="section" id="creating-recipes">
-<h2>Creating recipes<a class="headerlink" href="#creating-recipes" title="Permalink to this headline">¶</a></h2>
-<p>To retrieve a list of random ingredients,
-you can use the <code class="docutils literal notranslate"><span class="pre">lumache.get_random_ingredients()</span></code> function:</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">kind</span></code> parameter should be either <code class="docutils literal notranslate"><span class="pre">&quot;meat&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;fish&quot;</span></code>,
-or <code class="docutils literal notranslate"><span class="pre">&quot;veggies&quot;</span></code>. Otherwise, <code class="xref py py-func docutils literal notranslate"><span class="pre">lumache.get_random_ingredients()</span></code>
-will raise an exception.</p>
-<p>For example:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">lumache</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lumache</span><span class="o">.</span><span class="n">get_random_ingredients</span><span class="p">()</span>
-<span class="go">[&#39;shells&#39;, &#39;gorgonzola&#39;, &#39;parsley&#39;]</span>
-</pre></div>
-</div>
+<div class="section" id="medical-entity-dashboard">
+<h2>Medical entity dashboard<a class="headerlink" href="#medical-entity-dashboard" title="Permalink to this headline">¶</a></h2>
+<p>for each entity in the clinic, we will show list of patients that ready for relevant state, according to his permission. in addition the medical entity can search on history of visits.
+Each entity can see only his relevant states according to his permission that the admin give on the admin site.</p>
 </div>
 </div>
 

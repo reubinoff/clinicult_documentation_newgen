@@ -55,11 +55,43 @@ For more information about the deployment you can find on :ref:`ECS` chapter
 AWS
 ******************
 
+
+Terraform
+==================
+Aws services will be managed by `Terraform project <https://www.terraform.io/>`_.
+
+In our Account we will have 3 seperated environments:
+
+#. development - will be used during the development stage
+#. staging - for latest test before upgrading the production, or to test Beta versions
+#. production - production Environment
+
+All the Environments will be **identical**!. 
+
+The deployment will be with terraform scripts. that each change will be only can modified from terraform. the changes will be applied manually only. CI for terraform scripts will just check validation of the scripts.
+Terraform will save his environment state on S3. 
+
+In addition to the product environments, Terraform will also apllied usful lambda functions to help during the deployment stage. for example, Lambda function that update ECS clusters with new version uploaded.
+
+Another imprtant example for lambda function is to deploy new cluster (aka new Clinic) on ECS.
+
+
 S3
 ==================
+Each service in the cluster will have the option to get access to S3.
+Clinicult 2.0 will have S3 storage per cluster (aka Clinic) the path in the S3 will idetify the relevant service. 
+For example, Service visits, will write his data to 
+
+.. code-block:: console
+
+    s3://<clinic_name>/visits
+
+
 
 ECS
 ==================
+Each Clinic in Clinicult 2.0 will A seperate cluster in ECS fargate. each service will be an ECS service in the cluster. 
+for each Clinic will be a dedicated subnet in the environment VPC. this way, we will have 3 different VPCs, for development, staging and production. and each clinic will have seperate subnet in the VPC.
 
 Amazon Api Gateway may be integrated with ECS. more information may be found in `this guide <https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/>`_.
 

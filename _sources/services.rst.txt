@@ -9,11 +9,19 @@ ______
 
 User Service
 ########
+This service will store all the information on the User that use the system.the information will include also the user permissions. 
+in addiiton to the user permissions (Role / Group), this services will store all the personal information. for example phone or mail.
 
-test
-test
+The service will not store his login credentials. all the tokens or credentials will be stored in the :doc:`Authentication Service`
 
-WEB Service
+Authentication Service
+########
+
+Clinic WEB Service
+########
+readthedocs
+
+Admin WEB Service
 ########
 readthedocs
 

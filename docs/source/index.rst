@@ -26,5 +26,6 @@ Contents
    services
    infrastructure
    security
+   interfaces
    usage
    models

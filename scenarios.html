@@ -41,6 +41,8 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Scenarios</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#client-on-boarding">Client on-boarding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clinet-mediacal-file">Clinet Mediacal File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#patient-state-update">Patient state update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-recipes">Creating recipes</a></li>
 </ul>
 </li>
@@ -81,6 +83,21 @@
 one case is that user already exists in clinic data, and the second one is the patient is new.</p>
 <p>In both cases we will search for the Patient in the Search bar. if Patient exists, we can update his visit in the clinic.
 if Patient not exists in clinic data, we will have a form that add new Patient to our system, and after Patient added, we can update his visit.</p>
+</div>
+<div class="section" id="clinet-mediacal-file">
+<h2>Clinet Mediacal File<a class="headerlink" href="#clinet-mediacal-file" title="Permalink to this headline">¶</a></h2>
+<p>Each patient that visit the clinic, willl have medical file that will describe all his mediacal history and visits.
+in every state of his visit, the medical pearson, may take have access to his file.</p>
+</div>
+<div class="section" id="patient-state-update">
+<h2>Patient state update<a class="headerlink" href="#patient-state-update" title="Permalink to this headline">¶</a></h2>
+<p>Once patient has start his visit in the clinic, he may see couple of medical entities.
+each entity has option to change the pearson who need to check the patient. changing the medicak entity is similar to change his visit state.
+The patien can change his state couple of times, and can visit in the same state more then one time.
+for example, at the begining, the patient will see the nurse. then he can move to the doctor care, and then come back to the nurse.</p>
+<p>each state will be recorded and will update within his medical file.
+in addition, all those update will be stored in his visit event, and may be query later.
+Each medical update his medical file as mentioed before.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$</span> pip install lumache
 </pre></div>
 </div>
@@ -112,7 +129,7 @@ will raise an exception.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Graziella.</p>
+    <p>&#169; Copyright 2021, Clinicult.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

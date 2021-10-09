@@ -24,4 +24,4 @@ Contents
 
    scenarios
    usage
-   api
+   models

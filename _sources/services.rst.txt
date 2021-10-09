@@ -68,7 +68,9 @@ API gateway
 ==================
 API service that route all requests in the platform to his relevant service.
 the main reason to hold this service is that the only way to get into out platform is only through this service.
-more information about it you can find in :doc:`security` chapter
+more information about it you can find in :doc:`security` chapter.
+
+One of the Options to implement this service is with `Amazon Api Gateway <https://aws.amazon.com/api-gateway/>`_.
 
 FHIR API
 -----------------

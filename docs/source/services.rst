@@ -15,10 +15,10 @@ This service will store all the information on the User that use the system.the 
 in addiiton to the user permissions (Role / Group), this services will store all the personal information. for example phone or mail.
 
 The service will not store his login credentials. 
-all the tokens or credentials will be stored in the :ref:`Authentication Services`
+all the tokens or credentials will be stored in the :ref:`my-reference-label`
 
 
-
+.. _my-reference-label:
 Authentication Service
 ==================
 Authentication Methid will be implemented in this services. This service can be 3rd party service that can be integrated with out platform. 

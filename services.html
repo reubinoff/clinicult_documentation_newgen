@@ -16,7 +16,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Security" href="security.html" />
+    <link rel="next" title="Infrastructure" href="infrastructure.html" />
     <link rel="prev" title="Scenarios" href="scenarios.html" /> 
 </head>
 
@@ -46,7 +46,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#authentication-service">Authentication Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clinic-web-service">Clinic WEB Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#admin-web-service">Admin WEB Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#admin-managment-services">Admin Managment Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-management-services">Admin Management Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a></li>
@@ -54,11 +54,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#communication">Communication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data">data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">Cache</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
@@ -91,52 +93,53 @@
   <div class="section" id="services">
 <h1>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h1>
 <p>In order to support high performance and simplicity Clinicult 2.0 will be developed as micro-services architecture.
-each service will has his own purpose and his own data.</p>
+each service will have his own purpose and his own data.</p>
 <div class="section" id="outlet">
 <h2>Outlet<a class="headerlink" href="#outlet" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="user-service">
 <h3>User Service<a class="headerlink" href="#user-service" title="Permalink to this headline">¶</a></h3>
-<p>This service will store all the information on the User that use the system.the information will include also the user permissions.
-in addiiton to the user permissions (Role / Group), this services will store all the personal information. for example phone or mail.</p>
+<p>This service will store all the information on the User that use the system. the information will include also the user permissions.
+in addition to the user permissions (Role / Group), these services will store all the personal information. for example, phone or mail.</p>
 <p>The service will not store his login credentials.
 all the tokens or credentials will be stored in the <a class="reference internal" href="#authentication-service"><span class="std std-ref">Authentication Service</span></a></p>
 </div>
 <div class="section" id="authentication-service">
 <h3>Authentication Service<a class="headerlink" href="#authentication-service" title="Permalink to this headline">¶</a></h3>
-<p>Authentication Methid will be implemented in this services. This service can be 3rd party service that can be integrated with out platform.
+<p>Authentication Methid will be implemented in these services. This service can be 3rd party service that can be integrated with out platform.
 for example: <a class="reference external" href="https://auth0.com/">Auth0</a></p>
 </div>
 <div class="section" id="clinic-web-service">
 <h3>Clinic WEB Service<a class="headerlink" href="#clinic-web-service" title="Permalink to this headline">¶</a></h3>
-<p>This service will hold the client static files with some web servies that serve those files. for example Nodejs with <a class="reference external" href="https://expressjs.com/">Express</a>.</p>
+<p>This service will hold the client static files with some web servies that serve those files. for example, Nodejs with <a class="reference external" href="https://expressjs.com/">Express</a>.</p>
 <p>another option is to serve the Client site with <a class="reference external" href="https://aws.amazon.com/amplify/">AWS Amplify</a></p>
 </div>
 <div class="section" id="admin-web-service">
 <h3>Admin WEB Service<a class="headerlink" href="#admin-web-service" title="Permalink to this headline">¶</a></h3>
 <p>This Services will serve the admin web client. same as the <a class="reference internal" href="#clinic-web-service"><span class="std std-ref">Clinic WEB Service</span></a>.</p>
 </div>
-<div class="section" id="admin-managment-services">
-<h3>Admin Managment Services<a class="headerlink" href="#admin-managment-services" title="Permalink to this headline">¶</a></h3>
-<p>This server will host all the API and queries that the admin clinet needs. the main idea is that this server will not hold data at all, and will just proxy the requests to other services.</p>
+<div class="section" id="admin-management-services">
+<h3>Admin Management Services<a class="headerlink" href="#admin-management-services" title="Permalink to this headline">¶</a></h3>
+<p>This server will host all the API and queries that the admin client needs.
+the main idea is that this server will hold only the relevant data for admin <strong>only</strong>, and will just proxy the requests to other services for the additional data.</p>
 </div>
 <div class="section" id="visits-service">
 <h3>Visits Service<a class="headerlink" href="#visits-service" title="Permalink to this headline">¶</a></h3>
-<p>This service will hold the historic Visits. The issue here is that the data of this service will increament over the time, so to keep our performance fast and robust, we will keep here only the historic and not the <strong>current</strong> visit.
+<p>This service will hold the historic Visits. The issue here is that the data of this service will increment over the time, so to keep our performance fast and robust, we will keep here only the historic and not the <strong>current</strong> visit.
 this services will also give an enhanced API to query on the historic visits.</p>
-<p>there is an option to accelerate the queries is to use some Cache to hole the most visited enteries.
+<p>there is an option to accelerate the queries is to use some Cache to hole the most visited entries.
 example for implementation is <a class="reference external" href="https://www.geeksforgeeks.org/lru-cache-implementation/">LRU cache</a>  on Redis, to keep the visits per Patient.
-in this case when Patient is in servies now, the historic visits will be served from the Cache instead of the DB.</p>
+in this case when Patient is in service now, the historic visits will be served from the Cache instead of the Database.</p>
 </div>
 <div class="section" id="patient-service">
 <h3>Patient Service<a class="headerlink" href="#patient-service" title="Permalink to this headline">¶</a></h3>
-<p>This Service will serve the Patient information. personal and mediacal.
-for example, if we will need to create Mediacal file, Most of the data on the patient will be taken from this service.</p>
+<p>This Service will serve the Patient information. personal and medical.
+for example, if we will need to create medical file, Most of the data on the patient will be taken from this service.</p>
 <p>In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the <a class="reference internal" href="#visits-service"><span class="std std-ref">Visits Service</span></a>.</p>
 </div>
 <div class="section" id="api-gateway">
 <h3>API gateway<a class="headerlink" href="#api-gateway" title="Permalink to this headline">¶</a></h3>
 <p>API service that route all requests in the platform to his relevant service.
-the main reason to hold this service is that the only way to get into out platform is only threw this service.
+the main reason to hold this service is that the only way to get into out platform is only through this service.
 more information about it you can find in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter</p>
 </div>
 </div>
@@ -144,9 +147,36 @@ more information about it you can find in <a class="reference internal" href="se
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="communication">
 <h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
+<p>In Clinicut 2.0 we will have couple of communication channels:
+#. User client to the platform services
+#. Admin client to the platform servies
+#. Between the platform services</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>API client is not relevant at this stage</p>
 </div>
-<div class="section" id="data">
-<h3>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<p>By Design all the requests between the services and/or between the client to the services, will be threw REST API.
+All the calls between the Clients to the platform will be threw the <a class="reference internal" href="#api-gateway"><span class="std std-ref">API gateway</span></a> with <strong>https</strong> (<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5246">TLS</a>).
+the calls between the platform servies will be in <strong>http</strong> to the local dns name that the service will get from the process manager (<a class="reference external" href="https://kubernetes.io/">k8s</a>).</p>
+<p>more information about communication protocol in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter.</p>
+</div>
+<div class="section" id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
+<p>Each Service in Clinicult 2.0 will have his own database. we will use <a class="reference external" href="https://www.mysql.com/">MySql</a> in version <a class="reference external" href="https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-26.html">8.X</a> to store the service data.
+All the databases can host on the same server, but will have separate schemas. for multi-Geo services, will be serve as multi-Geo redundancy.
+the meaning of that each service has his own data, is if we need to have API that will return an Object that have data from multiple services, the response servies (that get the API request) will aggregate te the full data from all of the services, and will return full request to the client.</p>
+</div>
+<div class="section" id="cache">
+<h3>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h3>
+<p>Caching will be ready to serve the services. option for caches:
+#. <a class="reference external" href="https://redis.io/">Redis</a>
+#. <a class="reference external" href="https://www.google.com/aclk?sa=L&amp;ai=DChcSEwibgdTWyb3zAhVS53cKHRlUDlYYABAAGgJlZg&amp;ae=2&amp;sig=AOD64_3eWIyBu6dtM602se28yrqiAz9lgg&amp;q&amp;adurl&amp;ved=2ahUKEwj_kcvWyb3zAhVLDewKHSKAB-kQ0Qx6BAgCEAE">AWS Elastic Cache</a></p>
+<p>In both case the idea is to store only temporary data and not persistant. means that each data that stored in cache, can be clear and this will not impcat the system with data loss.
+Example, the last patients’ historic visits in the clinic.
+.. note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cache</span> <span class="n">mechanisim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">the</span> <span class="n">first</span> <span class="n">stage</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -156,7 +186,7 @@ more information about it you can find in <a class="reference internal" href="se
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="scenarios.html" class="btn btn-neutral float-left" title="Scenarios" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="security.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="infrastructure.html" class="btn btn-neutral float-right" title="Infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

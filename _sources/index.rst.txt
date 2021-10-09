@@ -24,6 +24,7 @@ Contents
 
    scenarios
    services
+   infrastructure
    security
    usage
    models

@@ -17,17 +17,20 @@ all the tokens or credentials will be stored in the :ref:`sdsdsd <services/Servi
 
 see :ref:`installation`.
 
-sd
-'''''''''''
 
 Authentication Service
 '''''''''''''''''
 Authentication Methid will be implemented in this services. This service can be 3rd party service that can be integrated with out platform. 
 for example: `Auth0 <https://auth0.com/>`_
 
+
 Clinic WEB Service
 '''''''''''''''''
-readthedocs
+This service will hold the client static files with some web servies that serve those files. for example Nodejs with `Express <https://expressjs.com/>`_.
+
+
+another option is to serve the Client site with `AWS Amplify <https://aws.amazon.com/amplify/>`_
+
 
 Admin WEB Service
 '''''''''''''''''

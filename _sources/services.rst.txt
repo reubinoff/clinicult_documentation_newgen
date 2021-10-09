@@ -34,7 +34,7 @@ another option is to serve the Client site with `AWS Amplify <https://aws.amazon
 
 Admin WEB Service
 ==================
-This Services will serve the admin web client. same as the clinic web service.
+This Services will serve the admin web client. same as the :ref:`Clinic WEB Service`.
 
 
 Admin Managment Services
@@ -57,7 +57,7 @@ Patient Service
 This Service will serve the Patient information. personal and mediacal.
 for example, if we will need to create Mediacal file, Most of the data on the patient will be taken from this service.
 
-In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the **visit servies**.
+In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the :ref:`Visits Service`.
 
 
 

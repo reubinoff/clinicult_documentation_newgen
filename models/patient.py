@@ -1,5 +1,5 @@
 """
-User Module hold the Patient information
+Patient Module hold the Patient information
 """
 from enum import Enum
 from datetime import datetime
@@ -14,15 +14,7 @@ class Clinic(Enum):
     maccabi = 2
     other = 3
 
-class User:
-    @property
-    def id() -> str:
-        """[summary]
-
-        :return: Client personal id
-        :rtype: str
-        """
-
+class Patient:
     id: str
     first_name: str
     last_name: str
@@ -31,8 +23,3 @@ class User:
     personal_clinic: Clinic
     cellphone: str
     mail: str
-
-class s:
-    """
-    sdsd
-    """ 

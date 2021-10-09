@@ -1,4 +1,5 @@
 {
   "restructuredtext.confPath": "${workspaceFolder}/docs/source",
-  "autoDocstring.docstringFormat": "sphinx"
+  "autoDocstring.docstringFormat": "sphinx",
+  "python.formatting.provider": "black"
 }

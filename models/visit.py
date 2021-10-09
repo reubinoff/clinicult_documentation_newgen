@@ -1,18 +1,10 @@
 """
-User Module hold the Patient information
+Visit Module discribe the patient visits in the clinic
 """
 from enum import Enum
 from datetime import datetime
 
 class Visit:
-    @property
-    def id() -> str:
-        """[summary]
-
-        :return: Client personal id
-        :rtype: str
-        """
-
     id: str
     first_name: str
     last_name: str
@@ -21,8 +13,3 @@ class Visit:
     personal_clinic: Clinic
     cellphone: str
     mail: str
-
-class s:
-    """
-    sdsd
-    """ 

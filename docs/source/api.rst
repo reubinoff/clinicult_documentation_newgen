@@ -4,6 +4,6 @@ API
 .. autosummary::
    :toctree: generated
 
-   models.user
+   models.patient
    models.medical_file
    models.visit

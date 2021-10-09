@@ -1,29 +1,24 @@
 """
-User Module hold the Patient information
+Medical file Module hold the Patient medical information
 """
 from enum import Enum
 from datetime import datetime
+from typing import List
+from .patient import Patient
+from .visit import Visit
+
+
+class Medication:
+    pass
+
+
+class Sensetivity:
+    pass
 
 
 class MedicalFile:
-    @property
-    def id() -> str:
-        """[summary]
-
-        :return: Client personal id
-        :rtype: str
-        """
-
     id: str
-    first_name: str
-    last_name: str
-    gender: Gender
-    date_of_birth: datetime
-    personal_clinic: Clinic
-    cellphone: str
-    mail: str
-
-class s:
-    """
-    sdsd
-    """ 
+    patient: Patient
+    visits: List[Visit]
+    medications: List[Medication]
+    sensetivities: List[Sensetivity]

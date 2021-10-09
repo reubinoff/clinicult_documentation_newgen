@@ -1,7 +1,7 @@
-﻿models.user
-===========
+﻿models.patient
+==============
 
-.. automodule:: models.user
+.. automodule:: models.patient
 
    
    
@@ -19,8 +19,7 @@
    
       Clinic
       Gender
-      User
-      s
+      Patient
    
    
 

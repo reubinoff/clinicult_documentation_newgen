@@ -45,12 +45,21 @@ This server will host all the API and queries that the admin clinet needs. the m
 
 Visits Service
 ==================
-history services
+This service will hold the historic Visits. The issue here is that the data of this service will increament over the time, so to keep our performance fast and robust, we will keep here only the historic and not the **current** visit.
+this services will also give an enhanced API to query on the historic visits.
+
+there is an option to accelerate the queries is to use some Cache to hole the most visited enteries.
+example for implementation is `LRU cache <https://www.geeksforgeeks.org/lru-cache-implementation/>`_  on Redis, to keep the visits per Patient.
+in this case when Patient is in servies now, the historic visits will be served from the Cache instead of the DB.
 
 
 Patient Service
 ==================
-patient + current visit
+This Service will serve the Patient information. personal and mediacal.
+for example, if we will need to create Mediacal file, Most of the data on the patient will be taken from this service.
+
+In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the **visit servies**.
+
 
 
 ******************

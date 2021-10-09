@@ -23,6 +23,9 @@ Authentication Service
 Authentication Methid will be implemented in these services. This service can be 3rd party service that can be integrated with out platform. 
 for example: `Auth0 <https://auth0.com/>`_
 
+.. note::
+    The only entities that can talk with this service is the :ref:`User Service` to update the user Role/Group, and the Client itslef for authentication
+
 
 Clinic WEB Service
 ==================
@@ -106,5 +109,15 @@ Caching will be ready to serve the services. option for caches:
 
 In both case the idea is to store only temporary data and not persistant. means that each data that stored in cache, can be clear and this will not impcat the system with data loss.
 Example, the last patients' historic visits in the clinic. 
+
 .. note::
     cache mechanisim is not needed for the first stage
+
+
+
+******************
+Schema
+******************
+.. image:: imgs/services.png
+    :width: 400
+    :alt: Services Outlet

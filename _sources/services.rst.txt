@@ -88,9 +88,10 @@ Communication
 ==================
 In Clinicut 2.0 we will have couple of communication channels:
 
-#. User client to the platform services
-#. Admin client to the platform servies
+#. User client to the :ref:`API gateway`
+#. Admin client to the :ref:`Admin Management Services`
 #. Between the platform services
+#. Pub-Sub between :ref:`Admin Management Services` to the clinic clusters
 
 .. note::
     API client is not relevant at this stage

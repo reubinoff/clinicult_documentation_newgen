@@ -48,6 +48,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#s3">S3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecs">ECS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ecr">ECR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sns">SNS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#source-control">Source Control</a></li>
@@ -152,9 +153,59 @@ For example, Service visits, will write his data to</p>
 <p>Each Clinic in Clinicult 2.0 will A seperate cluster in ECS fargate. each service will be an ECS service in the cluster.
 for each Clinic will be a dedicated subnet in the environment VPC. this way, we will have 3 different VPCs, for development, staging and production. and each clinic will have seperate subnet in the VPC.</p>
 <p>Amazon Api Gateway may be integrated with ECS. more information may be found in <a class="reference external" href="https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/">this guide</a>.</p>
+<p>All the clusters (aka clinics) will be accessed from the Api gateway <strong>only</strong>, and will be secured with TLS certivficate.
+In addition, the clusters will also have subscription channel to the <span class="xref std std-ref">SQS</span>. this way the <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> can push config changes or other updates to the clinic.</p>
 </div>
 <div class="section" id="ecr">
 <h3>ECR<a class="headerlink" href="#ecr" title="Permalink to this headline">¶</a></h3>
+<p>All Docker images will be managed in the Elastic container registry. Each service will have seperate repository and versioning.</p>
+<p>The mechanisim to push images will be only from the CI phase.</p>
+<p>We will have 10 version retention in the registry.
+In addition, every deploy environment (stage, dev, prod) will have different tag:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">clinicult/&lt;service_name&gt;:&lt;env_name&gt;-X.Y.Z</span>
+</pre></div>
+</div>
+<p>for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">clinicult/user_service:stage-1.0.32</span>
+</pre></div>
+</div>
+<p>In addition, Will be also <em>‘latest’</em> tag for the latest production environment.</p>
+</div>
+<div class="section" id="sns">
+<h3>SNS<a class="headerlink" href="#sns" title="Permalink to this headline">¶</a></h3>
+<p>SNS is a distributed publish-subscribe system. Messages are pushed to subscribers as and when they are sent by publishers to SNS.
+Amazon SNS is a fast, flexible, fully managed push notification service that lets you send individual messages or to bulk messages to large numbers of recipients.</p>
+<p>The <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> will have option to notify the clinics about configuration change or other notification with the SNS.
+Each service in the clinic will option to subscribe on <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> notifications.
+Each message will have different area of intrest (aka Topic). each service will subscribe to the relevant Topic.
+For example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;SubscriptionConfirmation&quot;</span><span class="p">,</span>
+<span class="nt">&quot;MessageId&quot;</span> <span class="p">:</span> <span class="s2">&quot;165545c9-2a5c-472c-8df2-7ff2be2b3b1b&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Token&quot;</span> <span class="p">:</span> <span class="s2">&quot;2336412f37...&quot;</span><span class="p">,</span>
+<span class="nt">&quot;TopicArn&quot;</span> <span class="p">:</span> <span class="s2">&quot;arn:aws:sns:us-west-2:123456789012:MyTopic&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Message&quot;</span> <span class="p">:</span> <span class="s2">&quot;You have chosen to subscribe to the topic arn:aws:sns:us-west-2:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.&quot;</span><span class="p">,</span>
+<span class="nt">&quot;SubscribeURL&quot;</span> <span class="p">:</span> <span class="s2">&quot;https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&amp;TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&amp;Token=2336412f37...&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Timestamp&quot;</span> <span class="p">:</span> <span class="s2">&quot;2012-04-26T20:45:04.751Z&quot;</span><span class="p">,</span>
+<span class="nt">&quot;SignatureVersion&quot;</span> <span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Signature&quot;</span> <span class="p">:</span> <span class="s2">&quot;EXAMPLEpH+DcEwjAPg8O9mY8dReBSwksfg2S7WKQcikcNKWLQjwu6A4VbeS0QHVCkhRS7fUQvi2egU3N858fiTDN6bkkOxYDVrY0Ad8L10Hs3zH81mtnPk5uvvolIC1CXGu43obcgFxeL3khZl8IKvO61GWB6jI9b5+gLPoBc1Q=&quot;</span><span class="p">,</span>
+<span class="nt">&quot;SigningCertURL&quot;</span> <span class="p">:</span> <span class="s2">&quot;https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To subscribe to this topic, the Service will create an SQS and will subscribe to the topic with sqs endpoint.
+for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">subscription</span> <span class="o">=</span> <span class="n">topic</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span>
+        <span class="n">Protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">,</span> <span class="n">Endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">ReturnSubscriptionArn</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Subscribed </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> to topic </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">topic</span><span class="o">.</span><span class="n">arn</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ClientError</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span>
+        <span class="s2">&quot;Couldn&#39;t subscribe </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> to topic </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">topic</span><span class="o">.</span><span class="n">arn</span><span class="p">)</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<p>More examples can be found in <a class="reference external" href="https://github.com/awsdocs/aws-doc-sdk-examples/blob/main/python/example_code/sns/sns_basics.py">Github</a></p>
 </div>
 </div>
 <div class="section" id="source-control">

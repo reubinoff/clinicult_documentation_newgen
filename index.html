@@ -1,190 +1,128 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Clinicult New-Gen documentation! &mdash; Clinicult 0.1 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Scenarios" href="scenarios.html" /> 
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title></title>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> Clinicult
-          </a>
-              <div class="version">
-                0.1.0
-              </div>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
-</ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
+  <style>
+    body {
+      background-image: url("a.jpg");
+      background-attachment: fixed;
+      color: #333;
+    }
+
+    .box {
+      border-radius: 3px;
+      background: rgba(101, 101, 101, 0.7);
+      margin: auto;
+      padding: 12px;
+    }
+
+    .lightbox {
+      zoom: 1.5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.8);
+      text-align: center;
+      margin: auto;
+    }
+
+    div.horizontal {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
+
+    div.vertical {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
+
+    ::-webkit-input-placeholder {
+      color: #955;
+      text-align: center;
+    }
+
+    ::-moz-placeholder {
+      color: #955;
+      text-align: center;
+    }
+
+    :-ms-input-placeholder {
+      color: #955;
+      text-align: center;
+    }
+  </style>
+
+  <body>
+    <div id="loginbox" class="lightbox">
+      <div class="horizontal">
+        <div class="vertical">
+          <div class="box">
+            <input
+              style="margin: 16px; text-align: center"
+              id="password"
+              type="password"
+              placeholder="password"
+            />
+            <br />
+            <button id="loginbutton" type="button">Enter</button>
+            <p id="wrongPassword" style="display: none">wrong password</p>
+          </div>
         </div>
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Clinicult</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to Clinicult New-Gen documentation!</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <div class="section" id="welcome-to-clinicult-new-gen-documentation">
-<h1>Welcome to Clinicult New-Gen documentation!<a class="headerlink" href="#welcome-to-clinicult-new-gen-documentation" title="Permalink to this headline">¶</a></h1>
-<p><strong>Clinicult</strong> is a Electric Medical Records application.</p>
-<p>Demo system on <a class="reference external" href="https://env-test.test.clinicult.net/">Clinicult Test System</a></p>
-<p>Backoffice site on <a class="reference external" href="https://env-test.api.test.clinicult.net/">Admin system</a></p>
-<p>Check out the <a class="reference internal" href="scenarios.html"><span class="doc">Scenarios</span></a> section for all User stories</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This project is new generation for clinicult version 1. <a class="reference external" href="https://clinikal-documentation.readthedocs.io/">Documentation</a>  is availble.</p>
-</div>
-<div class="section" id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scenarios.html#client-on-boarding">Client on-boarding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios.html#clinet-mediacal-file">Clinet Mediacal File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios.html#patient-state-update">Patient state update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scenarios.html#medical-entity-dashboard">Medical entity dashboard</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="services.html#outlet">Outlet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="services.html#user-service">User Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#authentication-service">Authentication Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#clinic-web-service">Clinic WEB Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#admin-web-service">Admin WEB Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#admin-management-services">Admin Management Services</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#visits-service">Visits Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#patient-service">Patient Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#api-gateway">API gateway</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="services.html#fhir-api">FHIR API</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="services.html#architecture">Architecture</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="services.html#communication">Communication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#database">Database</a></li>
-<li class="toctree-l3"><a class="reference internal" href="services.html#cache">Cache</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="services.html#schema">Schema</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#docker">Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#aws">AWS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure.html#terraform">Terraform</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure.html#s3">S3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure.html#ecs">ECS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure.html#ecr">ECR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="infrastructure.html#sns">SNS</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#source-control">Source Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#continous-integration">Continous Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="infrastructure.html#continous-deployment">Continous Deployment</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="security.html#access">Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="security.html#data">Data</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="interfaces.html#api">API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interfaces.html#maccabi">Maccabi</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#creating-recipes">Creating recipes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/models.patient.html">models.patient</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/models.medical_file.html">models.medical_file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/models.visit.html">models.visit</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="scenarios.html" class="btn btn-neutral float-right" title="Scenarios" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
-  <hr/>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.0.min.js"
+    ></script>
 
-  <div role="contentinfo">
-    <p>&#169; Copyright 2021, Clinicult.</p>
-  </div>
+    <script
+      type="text/javascript"
+      src="https://rawcdn.githack.com/chrisveness/crypto/7067ee62f18c76dd4a9d372a00e647205460b62b/sha1.js"
+    ></script>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    <script type="text/javascript">
+      "use strict";
 
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+      function loadPage(pwd) {
+        var hash = pwd;
+        hash = Sha1.hash(pwd);
+        var url = hash + "/index.html";
+
+        $.ajax({
+          url: url,
+          dataType: "html",
+          success: function (data) {
+            window.location = url;
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            parent.location.hash = hash;
+
+            //$("#wrongPassword").show();
+            $("#password").attr("placeholder", "wrong password");
+            $("#password").val("");
+          },
+        });
+      }
+
+      $("#loginbutton").on("click", function () {
+        loadPage($("#password").val());
       });
-  </script> 
-
-</body>
+      $("#password").keypress(function (e) {
+        if (e.which == 13) {
+          loadPage($("#password").val());
+        }
+      });
+      $("#password").focus();
+    </script>
+  </body>
 </html>

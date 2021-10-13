@@ -25,6 +25,7 @@ Contents
    scenarios
    services
    infrastructure
+   admin_management_services
    security
    interfaces
    usage

@@ -45,6 +45,8 @@ Admin Management Services
 This server will host all the API and queries that the admin client needs.
 the main idea is that this server will hold only the relevant data for admin **only**, and will just proxy the requests to other services for the additional data.
 
+More information on :doc:`admin_management_services`
+
 
 Visits Service
 ==================

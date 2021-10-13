@@ -166,6 +166,16 @@ More examples can be found in `Github <https://github.com/awsdocs/aws-doc-sdk-ex
 
 
 
+Amplify
+==================
+For Clinicult Web Clients we will use `AWS Amplify <https://aws.amazon.com/amplify/>`_ infrastructure for serving and :ref:`Continous Integration`.
+
+AWS Amplify is a set of purpose-built tools and services that makes it quick and easy for front-end web and mobile developers build full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services to further customize applications. 
+
+
+
+
+
 ******************
 Source Control
 ******************

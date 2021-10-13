@@ -30,10 +30,8 @@ jobs:
         mkdir a9bcd2c0cec5037332a93f2f27d31850cec34904
         cd ..
         cp -r docs/build/html/* gh-pages/a9bcd2c0cec5037332a93f2f27d31850cec34904/
-        ls -l
-        
-        cp index.html gh_pages/
-        cp a.jpg gh_pages/
+        cp index.html gh-pages/
+        cp a.jpg gh-pages/
         cd gh-pages
         touch .nojekyll
         git config --local user.email "action@github.com"

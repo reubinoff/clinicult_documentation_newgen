@@ -96,7 +96,7 @@ for each Clinic will be a dedicated subnet in the environment VPC. this way, we 
 Amazon Api Gateway may be integrated with ECS. more information may be found in `this guide <https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/>`_.
 
 All the clusters (aka clinics) will be accessed from the Api gateway **only**, and will be secured with TLS certivficate.
-In addition, the clusters will also have subscription channel to the :ref:`SQS`. this way the :ref:`Admin Management Services` can push config changes or other updates to the clinic.
+In addition, the clusters will also have subscription channel to the :ref:`SNS`. this way the :ref:`Admin Management Services` can push config changes or other updates to the clinic.
 
 
 ECR

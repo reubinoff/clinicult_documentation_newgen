@@ -26,6 +26,7 @@ jobs:
     - name: Commit documentation changes
       run: |
         git clone https://github.com/reubinoff/clinicult_documentation_newgen.git --branch gh-pages --single-branch gh-pages
+        mkdir gh-pages/a9bcd2c0cec5037332a93f2f27d31850cec34904/
         cp -r docs/build/html/* gh-pages/a9bcd2c0cec5037332a93f2f27d31850cec34904/
         cp index.html gh_pages/
         cp a.jpg gh_pages/

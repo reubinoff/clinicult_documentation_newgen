@@ -7,11 +7,12 @@ Admin Management Services
 Clinic Onboarding
 ******************
 
+
 ******************
-API
+Users Management
 ******************
 
 
 ******************
-Maccabi
+Settings
 ******************

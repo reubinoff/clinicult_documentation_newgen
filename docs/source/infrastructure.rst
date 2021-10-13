@@ -215,7 +215,7 @@ The CI will run for each push to the relevant environemnts branches:
 
 the feature branches will exit from the development branch.
 
-
+In addition, Clinicult should add integration to `Snyc <https://snyk.io/>`_ to enable vulnerabilities scanning.
 
 
 

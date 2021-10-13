@@ -31,6 +31,20 @@ the clinics will share only those components:
 Once we will keep those ruls, the data will be isolated and secured. 
 
 
+******************
+Authentication
+******************
+Each Clinic will be protected with different authentication mechanisim. means that each clinic will have different users and different admin user.
+All authentication flow will be managed by :ref:`user service`. the authentication identification will be implemented with `Auth0 <https://auth0.com/>`_. 
+The :ref:`user service` will manage the Users in the clinic, and the :ref:`Authentication Service` will manage the access flow. this way all clinic tokens will be safe.
+
+.. image:: imgs/auth.png
+    :alt: Authentication
+
+
+More information about Oauth2 flow, you can find in `This documentation <https://auth0.com/docs/authorization/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce>`_
+
+
 
 ******************
 VPN
@@ -100,5 +114,8 @@ Logging features are available in the following AWS services:
 
 Resources
 ==================
+All Aws Resource will be created from Terraform. this means that Terraform will have an Account with AWS Access keys the grant him permissions to create resources in AWS account.
 
+In addition, we will have option to create new environment in :ref:`Clinic Onboarding` session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
+the grantted permissions will be from seperate account and will have only the required permissions **only**.
 

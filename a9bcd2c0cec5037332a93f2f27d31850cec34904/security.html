@@ -45,6 +45,7 @@
 <li class="toctree-l1"><a class="reference internal" href="admin_management_services.html">Admin Management Services</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Security</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#environment-isolation">Environment Isolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vpn">VPN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ssl">SSL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#aws">AWS</a><ul>
@@ -110,6 +111,14 @@ hence, Only the relevant service can access the database.</p>
 </ol>
 <p>Once we will keep those ruls, the data will be isolated and secured.</p>
 </div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>Each Clinic will be protected with different authentication mechanisim. means that each clinic will have different users and different admin user.
+All authentication flow will be managed by <a class="reference internal" href="services.html#user-service"><span class="std std-ref">User Service</span></a>. the authentication identification will be implemented with <a class="reference external" href="https://auth0.com/">Auth0</a>.
+The <a class="reference internal" href="services.html#user-service"><span class="std std-ref">User Service</span></a> will manage the Users in the clinic, and the <a class="reference internal" href="services.html#authentication-service"><span class="std std-ref">Authentication Service</span></a> will manage the access flow. this way all clinic tokens will be safe.</p>
+<img alt="Authentication" src="_images/auth.png" />
+<p>More information about Oauth2 flow, you can find in <a class="reference external" href="https://auth0.com/docs/authorization/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">This documentation</a></p>
+</div>
 <div class="section" id="vpn">
 <h2>VPN<a class="headerlink" href="#vpn" title="Permalink to this headline">¶</a></h2>
 <p>To open access to the internal ip within the cluster, we will need to create VPN access <strong>per deployment environment</strong>.</p>
@@ -150,6 +159,9 @@ The Load balancer will be open to the internet for incomming connection from the
 </div>
 <div class="section" id="resources">
 <h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>All Aws Resource will be created from Terraform. this means that Terraform will have an Account with AWS Access keys the grant him permissions to create resources in AWS account.</p>
+<p>In addition, we will have option to create new environment in <a class="reference internal" href="admin_management_services.html#clinic-onboarding"><span class="std std-ref">Clinic Onboarding</span></a> session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
+the grantted permissions will be from seperate account and will have only the required permissions <strong>only</strong>.</p>
 </div>
 </div>
 </div>

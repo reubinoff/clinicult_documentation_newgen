@@ -45,11 +45,13 @@ After creation, the platform admin will be able to see the clinic in the Admin p
 
 Users Management
 ==================
-
+manage user per clinic
 
 
 Settings
 ==================
+one global setting as default
+each client will inherne this globakl and can be edit. button push to clinic
 
 
 ******************

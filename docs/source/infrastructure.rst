@@ -177,9 +177,13 @@ the entire code will be in single repository for easy managment and development 
 ******************
 Continous Integration
 ******************
+The entire Continous Integration will be implemented in `Github-Actions <https://github.com/features/actions>`_.
+
+For each service the flow will be:
+
+#. Run tests
+#. Build :ref:`Docker` image
+#. Upload image to :ref:`ECR`
+#. Update :ref:`ECS` service with the new image
 
 
-
-******************
-Continous Deployment
-******************

@@ -156,7 +156,7 @@ For example, Service visits, will write his data to</p>
 for each Clinic will be a dedicated subnet in the environment VPC. this way, we will have 3 different VPCs, for development, staging and production. and each clinic will have seperate subnet in the VPC.</p>
 <p>Amazon Api Gateway may be integrated with ECS. more information may be found in <a class="reference external" href="https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/">this guide</a>.</p>
 <p>All the clusters (aka clinics) will be accessed from the Api gateway <strong>only</strong>, and will be secured with TLS certivficate.
-In addition, the clusters will also have subscription channel to the <span class="xref std std-ref">SQS</span>. this way the <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> can push config changes or other updates to the clinic.</p>
+In addition, the clusters will also have subscription channel to the <a class="reference internal" href="#sns"><span class="std std-ref">SNS</span></a>. this way the <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> can push config changes or other updates to the clinic.</p>
 </div>
 <div class="section" id="ecr">
 <h3>ECR<a class="headerlink" href="#ecr" title="Permalink to this headline">¶</a></h3>
@@ -243,6 +243,7 @@ the entire code will be in single repository for easy managment and development 
 <li><p><strong>development</strong> - testing</p></li>
 </ol>
 <p>the feature branches will exit from the development branch.</p>
+<p>In addition, Clinicult should add integration to <a class="reference external" href="https://snyk.io/">Snyc</a> to enable vulnerabilities scanning.</p>
 </div>
 </div>
 

@@ -66,6 +66,12 @@ All the Web services will serve in Https/TLS **Only**. the Certificates will be 
 The client Certificate will be generated from `AWS Amplify <https://aws.amazon.com/amplify/>`_.
 
 
+******************
+Domain
+******************
+The Domain will be managed In Route53
+
+
 
 ******************
 AWS

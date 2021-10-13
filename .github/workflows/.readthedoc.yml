@@ -19,13 +19,13 @@ jobs:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         pre-build-command: "apt-get update -y && apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended"
         build-command: "make latexpdf"
-        docs-folder: "docs2/"
+        docs-folder: "docs/"
     
     - name: TEST PDF
       run: |
         ls -l docs2
         ls -l docs2/build
-        
+
     - uses: actions/upload-artifact@v1
       with:
         name: DocumentationHTML

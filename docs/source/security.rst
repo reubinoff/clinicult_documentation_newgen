@@ -56,3 +56,49 @@ The client Certificate will be generated from `AWS Amplify <https://aws.amazon.c
 ******************
 AWS
 ******************
+
+IAM
+==================
+You use an access key (an access key ID and secret access key) to make programmatic requests to AWS. However, do not use your AWS account root user access key. The access key for your AWS account root user gives full access to all your resources for all AWS services, including your billing information. You cannot reduce the permissions associated with your AWS account root user access key.
+
+Therefore, protect your root user access key like you would your credit card numbers or any other sensitive secret. Here are some ways to do that:
+
+We strongly recommend that you do not use the root user for your everyday tasks, even the administrative ones. Instead, use your root user credentials only to `create your IAM admin <https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html>`_ user. Then securely lock away the root user credentials and use them to perform only a few account and service management tasks. For everyday tasks, do not use your IAM admin user. Instead, `use roles to delegate permissions <https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#delegate-using-roles>`_.
+
+If you do have an access key for your AWS account root user, delete it. If you must keep it, rotate (change) the access key regularly. To delete or rotate your root user access keys, go to the My Security Credentials page in the AWS Management Console and sign in with your account's email address and password. You can manage your access keys in the Access keys section. For more information about rotating access keys, see Rotating access keys.
+
+Never share your AWS account root user password or access keys with anyone. The remaining sections of this document discuss various ways to avoid having to share your AWS account root user credentials with other users. They also explain how to avoid having to embed them in an application.
+
+Use a strong password to help protect account-level access to the AWS Management Console.
+
+Enable AWS multi-factor authentication (MFA) on your AWS account root user account. For more information, see Using multi-factor authentication (MFA) in `AWS <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html>`_.
+
+
+Access keys
+________________
+Access keys provide programmatic access to AWS. Do not embed access keys within unencrypted code or share these security credentials between users in your AWS account. For applications that need access to AWS, configure the program to retrieve temporary security credentials using an IAM role. To allow your users individual programmatic access, create an IAM user with personal access keys.
+
+
+Monitoring
+________________
+You can use logging features in AWS to determine the actions users have taken in your account and the resources that were used. The log files show the time and date of actions, the source IP for an action, which actions failed due to inadequate permissions, and more.
+
+Logging features are available in the following AWS services:
+
+`Amazon CloudFront <https://aws.amazon.com/cloudfront/>`_ – Logs user requests that CloudFront receives. For more information, see `Access Logs <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html>`_ in the Amazon CloudFront Developer Guide.
+
+`AWS CloudTrail <https://aws.amazon.com/cloudtrail/>`_ – Logs AWS API calls and related events made by or on behalf of an AWS account. For more information, see the AWS CloudTrail User Guide.
+
+`Amazon CloudWatch <https://aws.amazon.com/cloudwatch/>`_ – Monitors your AWS Cloud resources and the applications you run on AWS. You can set alarms in CloudWatch based on metrics that you define. For more information, see the Amazon `CloudWatch User Guide <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/>`_.
+
+`AWS Config <https://aws.amazon.com/config/>`_ – Provides detailed historical information about the configuration of your AWS resources, including your IAM users, user groups, roles, and policies. For example, you can use AWS Config to determine the permissions that belonged to a user or user group at a specific time. For more information, see the `AWS Config Developer Guide <https://docs.aws.amazon.com/config/latest/developerguide/>`_.
+
+`Amazon Simple Storage Service (Amazon S3) <https://aws.amazon.com/s3/>`_ – Logs access requests to your Amazon S3 buckets. For more information, see Server Access Logging in the Amazon Simple Storage Service User Guide.
+
+
+
+
+Resources
+==================
+
+

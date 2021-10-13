@@ -62,6 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rbac">RBAC</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
@@ -107,6 +108,13 @@ each service will have his own purpose and his own data.</p>
 in addition to the user permissions (Role / Group), these services will store all the personal information. for example, phone or mail.</p>
 <p>The service will not store his login credentials.
 all the tokens or credentials will be stored in the <a class="reference internal" href="#authentication-service"><span class="std std-ref">Authentication Service</span></a></p>
+<p>In Each Clinic there will be 4 Role to access the clinic:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Admin</span></code> - manage the clinic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nurse</span></code> - handle the states for Nurse</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Doctor</span></code> - handle the state for doctor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Office</span></code> - manage the other states</p></li>
+</ol>
 </div>
 <div class="section" id="authentication-service">
 <h3>Authentication Service<a class="headerlink" href="#authentication-service" title="Permalink to this headline">¶</a></h3>
@@ -203,6 +211,46 @@ Example, the last patients’ historic visits in the clinic.</p>
 <div class="section" id="schema">
 <h2>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/services.png"><img alt="Services Outlet" src="_images/services.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="rbac">
+<h2>RBAC<a class="headerlink" href="#rbac" title="Permalink to this headline">¶</a></h2>
+<p>Clinicult platform will implement Role-based-access-control. means that each user that communicate with the servicess will have to identify with the system with token that he get after Login phase.
+this Token will include his permissions in the system.</p>
+<p>Each service that read the Token will be able to read the permissions that the user have.</p>
+<p>Each service will map the API in the service to the relevant permissions. despite the <code class="docutils literal notranslate"><span class="pre">Login</span></code> and <code class="docutils literal notranslate"><span class="pre">Logout</span></code>, <strong>all the other Apis requires permissions</strong>.</p>
+<p>Role can be implemented as:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>[
+    &#39;clinicult:visits:read&#39;,
+    &#39;clinicult:patient:write&#39;
+    &#39;clinicult:user:*&#39;
+]
+</pre></div>
+</div>
+<p>in this Example, this permissions says that:</p>
+<ol class="arabic simple">
+<li><p>User have <em>read</em> access to the visits data</p></li>
+<li><p>User have <em>write</em> + <em>read</em> access to the patient data</p></li>
+<li><p>User have full access (includes delete) to the user data</p></li>
+</ol>
+<p>the Toekn is send in Bearer Http Header.</p>
+<p>the service parse this Token and check the permissions. example for parsing and check experiration data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jwt.exceptions</span> <span class="kn">import</span> <span class="n">ExpiredSignatureError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+        <span class="n">token</span><span class="p">,</span>
+        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;my_super_secret&#39;</span><span class="p">,</span>
+        <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">header_data</span><span class="p">[</span><span class="s1">&#39;alg&#39;</span><span class="p">],</span> <span class="p">]</span>
+    <span class="p">)</span>
+<span class="k">except</span> <span class="n">ExpiredSignatureError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to decode the token, error: </span><span class="si">{error}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Token expiration will be 2 weeks</p>
+</div>
+<p>More information on the Token and security you can find in <a class="reference internal" href="security.html#authentication"><span class="std std-ref">Authentication</span></a> chapter</p>
 </div>
 </div>
 

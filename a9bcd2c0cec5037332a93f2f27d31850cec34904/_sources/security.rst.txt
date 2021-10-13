@@ -27,6 +27,7 @@ the clinics will share only those components:
 
 #. Load balancer
 #. Amplify Client
+#. SNS
 
 Once we will keep those ruls, the data will be isolated and secured. 
 

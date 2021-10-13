@@ -17,6 +17,13 @@ in addition to the user permissions (Role / Group), these services will store al
 The service will not store his login credentials. 
 all the tokens or credentials will be stored in the :ref:`Authentication Service`
 
+In Each Clinic there will be 4 Role to access the clinic:
+
+#. ``Admin`` - manage the clinic
+#. ``Nurse`` - handle the states for Nurse
+#. ``Doctor`` - handle the state for doctor
+#. ``Office`` - manage the other states
+
 
 Authentication Service
 ==================
@@ -135,3 +142,55 @@ Schema
 .. image:: imgs/services.png
     :width: 400
     :alt: Services Outlet
+
+
+******************
+RBAC
+******************
+Clinicult platform will implement Role-based-access-control. means that each user that communicate with the servicess will have to identify with the system with token that he get after Login phase.
+this Token will include his permissions in the system. 
+
+Each service that read the Token will be able to read the permissions that the user have. 
+
+Each service will map the API in the service to the relevant permissions. despite the ``Login`` and ``Logout``, **all the other Apis requires permissions**.
+
+Role can be implemented as:
+
+.. code-block:: json
+
+    [
+        'clinicult:visits:read',
+        'clinicult:patient:write'
+        'clinicult:user:*'
+    ]
+
+in this Example, this permissions says that:
+
+#. User have *read* access to the visits data
+#. User have *write* + *read* access to the patient data
+#. User have full access (includes delete) to the user data
+
+the Toekn is send in Bearer Http Header. 
+
+the service parse this Token and check the permissions. example for parsing and check experiration data:
+
+.. code-block:: python
+
+    from jwt.exceptions import ExpiredSignatureError
+
+    try:
+        payload = jwt.decode(
+            token,
+            key='my_super_secret',
+            algorithms=[header_data['alg'], ]
+        )
+    except ExpiredSignatureError as error:
+        print(f'Unable to decode the token, error: {error}')
+
+
+
+
+.. note::
+    Token expiration will be 2 weeks
+
+More information on the Token and security you can find in :ref:`Authentication` chapter

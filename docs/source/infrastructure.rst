@@ -200,6 +200,16 @@ The flow can be change according to the code.
 
 CI session will run only on the relevant code that changed. for example, if Service_a has changed, there is no need to run CI on service_b code.
 
+The CI will run for each push to the relevant environemnts branches:
+
+#. **main** - production
+#. **develop** - staging
+#. **development** - testing
+
+
+the feature branches will exit from the development branch.
+
+
 
 
 

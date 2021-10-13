@@ -175,6 +175,13 @@ AWS Amplify is a set of purpose-built tools and services that makes it quick and
 
 
 
+Schema
+==================
+.. image:: imgs/infra.png
+    :width: 400
+    :alt: Services Outlet
+
+
 
 ******************
 Source Control

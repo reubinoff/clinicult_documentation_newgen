@@ -169,6 +169,8 @@ More examples can be found in `Github <https://github.com/awsdocs/aws-doc-sdk-ex
 ******************
 Source Control
 ******************
+All Code services will be managed by Source control. our code will be on `Github <https://github.com>`_.
+the entire code will be in single repository for easy managment and development cycle.
 
 
 

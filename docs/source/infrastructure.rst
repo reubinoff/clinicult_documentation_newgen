@@ -95,9 +95,74 @@ for each Clinic will be a dedicated subnet in the environment VPC. this way, we 
 
 Amazon Api Gateway may be integrated with ECS. more information may be found in `this guide <https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/>`_.
 
+All the clusters (aka clinics) will be accessed from the Api gateway **only**, and will be secured with TLS certivficate.
+In addition, the clusters will also have subscription channel to the :ref:`SQS`. this way the :ref:`Admin Management Services` can push config changes or other updates to the clinic.
+
 
 ECR
 ==================
+All Docker images will be managed in the Elastic container registry. Each service will have seperate repository and versioning.
+
+The mechanisim to push images will be only from the CI phase. 
+
+We will have 10 version retention in the registry.
+In addition, every deploy environment (stage, dev, prod) will have different tag:
+
+.. code-block:: console
+
+    clinicult/<service_name>:<env_name>-X.Y.Z
+
+for example:
+
+.. code-block:: console
+
+    clinicult/user_service:stage-1.0.32
+
+In addition, Will be also *'latest'* tag for the latest production environment.
+
+
+
+
+SNS
+==================
+SNS is a distributed publish-subscribe system. Messages are pushed to subscribers as and when they are sent by publishers to SNS.
+Amazon SNS is a fast, flexible, fully managed push notification service that lets you send individual messages or to bulk messages to large numbers of recipients.
+
+The :ref:`Admin Management Services` will have option to notify the clinics about configuration change or other notification with the SNS.
+Each service in the clinic will option to subscribe on :ref:`Admin Management Services` notifications.
+Each message will have different area of intrest (aka Topic). each service will subscribe to the relevant Topic.
+For example:
+
+.. code-block:: json
+
+    {
+    "Type" : "SubscriptionConfirmation",
+    "MessageId" : "165545c9-2a5c-472c-8df2-7ff2be2b3b1b",
+    "Token" : "2336412f37...",
+    "TopicArn" : "arn:aws:sns:us-west-2:123456789012:MyTopic",
+    "Message" : "You have chosen to subscribe to the topic arn:aws:sns:us-west-2:123456789012:MyTopic.\nTo confirm the subscription, visit the SubscribeURL included in this message.",
+    "SubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&Token=2336412f37...",
+    "Timestamp" : "2012-04-26T20:45:04.751Z",
+    "SignatureVersion" : "1",
+    "Signature" : "EXAMPLEpH+DcEwjAPg8O9mY8dReBSwksfg2S7WKQcikcNKWLQjwu6A4VbeS0QHVCkhRS7fUQvi2egU3N858fiTDN6bkkOxYDVrY0Ad8L10Hs3zH81mtnPk5uvvolIC1CXGu43obcgFxeL3khZl8IKvO61GWB6jI9b5+gLPoBc1Q=",
+    "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem"
+    }
+
+To subscribe to this topic, the Service will create an SQS and will subscribe to the topic with sqs endpoint.
+for example:
+
+.. code-block:: python
+
+    try:
+        subscription = topic.subscribe(
+            Protocol=protocol, Endpoint=endpoint, ReturnSubscriptionArn=True)
+        logger.info("Subscribed %s %s to topic %s.", protocol, endpoint, topic.arn)
+    except ClientError:
+        logger.exception(
+            "Couldn't subscribe %s %s to topic %s.", protocol, endpoint, topic.arn)
+        raise
+
+More examples can be found in `Github <https://github.com/awsdocs/aws-doc-sdk-examples/blob/main/python/example_code/sns/sns_basics.py>`_
 
 
 

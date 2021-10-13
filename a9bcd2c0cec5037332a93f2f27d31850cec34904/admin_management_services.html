@@ -43,8 +43,11 @@
 <li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Admin Management Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#clinic-onboarding">Clinic Onboarding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#users-management">Users Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clinic-onboarding">Clinic Onboarding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-sub-domain-for-the-clinic">#. Create sub-domain for the clinic.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#users-management">Users Management</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a></li>
 </ul>
 </li>
@@ -81,9 +84,25 @@
 <h1>Admin Management Services<a class="headerlink" href="#admin-management-services" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="clinic-onboarding">
 <h2>Clinic Onboarding<a class="headerlink" href="#clinic-onboarding" title="Permalink to this headline">¶</a></h2>
+<p>Clinics On-boarding will is interactive procedure in the system. this procedure may be invoke only by platform admin (aka root).
+the procedure will create new clinic in Clinicult platform.
+The on-boarding procedure can create a clinic on target choosen deployment environment.</p>
+<p>in the Admin Web UI, will be an option to create new Clinic. once clicked, the admin will specify the Clinic name and the target deployment environment.
+for example Clinic <code class="docutils literal notranslate"><span class="pre">CT-Arad</span></code> on environment <code class="docutils literal notranslate"><span class="pre">Production</span></code>.</p>
+<p>The Flow will run the following steps:</p>
+<ol class="arabic simple">
+<li><p>Create new EVS cluster</p></li>
+<li><p>Create new databases for the clinic</p></li>
+<li><p>open security-group and ports</p></li>
+<li><p>mount Load-balancer to the relevant services</p></li>
+<li><p>Create new User (admin) for the clinic in the User-service</p></li>
+</ol>
+<div class="section" id="create-sub-domain-for-the-clinic">
+<h3>#. Create sub-domain for the clinic.<a class="headerlink" href="#create-sub-domain-for-the-clinic" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="users-management">
-<h2>Users Management<a class="headerlink" href="#users-management" title="Permalink to this headline">¶</a></h2>
+<h3>Users Management<a class="headerlink" href="#users-management" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="settings">
 <h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>

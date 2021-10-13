@@ -134,7 +134,25 @@ The Load balancer will be open to the internet for incomming connection from the
 </div>
 <div class="section" id="domain">
 <h2>Domain<a class="headerlink" href="#domain" title="Permalink to this headline">¶</a></h2>
-<p>The Domain will be managed In Route53</p>
+<p>The Domain will be managed In Route53.
+the base route will be for example <code class="docutils literal notranslate"><span class="pre">clinicult2.com</span></code></p>
+<p>Each Clinic will have seperate domains with ssl Certificates. the domain production templates:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service_name.clinic_name.clinicult2.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.clinic_name.clinicult2.com</span></code></p></li>
+</ol>
+<p>for the other deployment environemnts the domain templates:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service_name.clinic_name.&lt;environment&gt;.clinicult2.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.clinic_name.&lt;environment&gt;.clinicult2.com</span></code></p></li>
+</ol>
+<p>for example: <code class="docutils literal notranslate"><span class="pre">app.ct-arad.staging.clinicult2.com</span></code></p>
+<p>The load-balancer will route the requests to <code class="docutils literal notranslate"><span class="pre">X.clinic_name.clinicult2.com</span></code> to the relevant cluster</p>
+<p>in addition the admin will have those domains:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app.admin.clinicult2.com</span></code> - client</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src.admin.clinicult2.com</span></code> - server</p></li>
+</ol>
 </div>
 <div class="section" id="aws">
 <h2>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h2>

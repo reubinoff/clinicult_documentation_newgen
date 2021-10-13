@@ -69,7 +69,29 @@ The client Certificate will be generated from `AWS Amplify <https://aws.amazon.c
 ******************
 Domain
 ******************
-The Domain will be managed In Route53
+The Domain will be managed In Route53.
+the base route will be for example ``clinicult2.com``
+
+Each Clinic will have seperate domains with ssl Certificates. the domain production templates:
+
+#. ``service_name.clinic_name.clinicult2.com``
+#. ``app.clinic_name.clinicult2.com``
+
+for the other deployment environemnts the domain templates:
+
+#. ``service_name.clinic_name.<environment>.clinicult2.com``
+#. ``app.clinic_name.<environment>.clinicult2.com``
+
+for example: ``app.ct-arad.staging.clinicult2.com``
+
+
+The load-balancer will route the requests to ``X.clinic_name.clinicult2.com`` to the relevant cluster
+
+
+in addition the admin will have those domains:
+
+#. ``app.admin.clinicult2.com`` - client
+#. ``src.admin.clinicult2.com`` - server
 
 
 

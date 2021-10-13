@@ -44,8 +44,10 @@
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="admin_management_services.html">Admin Management Services</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Security</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#access">Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-isolation">Environment Isolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn">VPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssl">SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aws">AWS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a></li>
@@ -79,14 +81,42 @@
              
   <div class="section" id="security">
 <h1>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h1>
-<p>Security data</p>
-<div class="section" id="access">
-<h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>
-<p>access</p>
+<p>Clinicut patform has medical sensetive data, hence we need to nesure that all our data is safe and protected.
+the protection has couple of security layers.</p>
+<div class="section" id="environment-isolation">
+<h2>Environment Isolation<a class="headerlink" href="#environment-isolation" title="Permalink to this headline">¶</a></h2>
+<p>Each clinic in the platform will run on seperate <a class="reference internal" href="infrastructure.html#ecs"><span class="std std-ref">ECS</span></a> cluster. Each cluster will has seperate subnet in his VPC. there will be know open ports between clinic’s subnets.</p>
+<p>Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during <a class="reference internal" href="admin_management_services.html#clinic-onboarding"><span class="std std-ref">Clinic Onboarding</span></a> time.
+the access from the cluster to the database, will be from Security-group that will define access from the Cluster to the spsific database. each service will have his own security-group to access his own database.
+hence, Only the relevant service can access the database.</p>
+<p>We will have 3 kinds of environemnts:</p>
+<ol class="arabic simple">
+<li><p>Production</p></li>
+<li><p>Staging</p></li>
+<li><p>Development</p></li>
+</ol>
+<p>Clinic with the same name can be exists on each environment, but those clusters should be isolated.</p>
+<p>the clinics will share only those components:</p>
+<ol class="arabic simple">
+<li><p>Load balancer</p></li>
+<li><p>Amplify Client</p></li>
+</ol>
+<p>Once we will keep those ruls, the data will be isolated and secured.</p>
 </div>
-<div class="section" id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
-<p>access</p>
+<div class="section" id="vpn">
+<h2>VPN<a class="headerlink" href="#vpn" title="Permalink to this headline">¶</a></h2>
+<p>To open access to the internal ip within the cluster, we will need to create VPN access <strong>per deployment environment</strong>.</p>
+<p>Each Environemnt will have different VPN server. we will use <a class="reference external" href="https://openvpn.net/">OpenVPN</a> to implement the server side.</p>
+<p>the Only ports that will be open is the web server, and it will be open to the <a class="reference internal" href="services.html#api-gateway"><span class="std std-ref">API gateway</span></a> <strong>Only</strong>, and the API gateway will be open to the Load Balancer <strong>Only</strong>.
+The Load balancer will be open to the internet for incomming connection from the <em>Amplify Client</em>.</p>
+</div>
+<div class="section" id="ssl">
+<h2>SSL<a class="headerlink" href="#ssl" title="Permalink to this headline">¶</a></h2>
+<p>All the Web services will serve in Https/TLS <strong>Only</strong>. the Certificates will be generated from AWS <a class="reference external" href="https://aws.amazon.com/certificate-manager/">Certificate manager</a>.</p>
+<p>The client Certificate will be generated from <a class="reference external" href="https://aws.amazon.com/amplify/">AWS Amplify</a>.</p>
+</div>
+<div class="section" id="aws">
+<h2>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

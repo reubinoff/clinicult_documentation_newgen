@@ -120,6 +120,8 @@ for example:
 
 In addition, Will be also *'latest'* tag for the latest production environment.
 
+ECR has option to enable image scanning. we need to enable this option and to add alter for security events.
+
 
 
 

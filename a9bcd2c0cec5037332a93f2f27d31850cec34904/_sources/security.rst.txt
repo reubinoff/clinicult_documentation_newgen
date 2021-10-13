@@ -67,7 +67,7 @@ The client Certificate will be generated from `AWS Amplify <https://aws.amazon.c
 
 
 ******************
-Domain
+Domains
 ******************
 The Domain will be managed In Route53.
 the base route will be for example ``clinicult2.com``

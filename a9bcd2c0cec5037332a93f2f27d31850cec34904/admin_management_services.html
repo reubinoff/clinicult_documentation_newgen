@@ -43,12 +43,13 @@
 <li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Admin Management Services</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#clinic-onboarding">Clinic Onboarding</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-sub-domain-for-the-clinic">#. Create sub-domain for the clinic.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clinic-management">Clinic Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-onboarding">Clinic Onboarding</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#users-management">Users Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-servers">Windows Servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
@@ -82,13 +83,20 @@
              
   <div class="section" id="admin-management-services">
 <h1>Admin Management Services<a class="headerlink" href="#admin-management-services" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="clinic-management">
+<h2>Clinic Management<a class="headerlink" href="#clinic-management" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clinic-onboarding">
-<h2>Clinic Onboarding<a class="headerlink" href="#clinic-onboarding" title="Permalink to this headline">¶</a></h2>
+<h3>Clinic Onboarding<a class="headerlink" href="#clinic-onboarding" title="Permalink to this headline">¶</a></h3>
 <p>Clinics On-boarding will is interactive procedure in the system. this procedure may be invoke only by platform admin (aka root).
 the procedure will create new clinic in Clinicult platform.
 The on-boarding procedure can create a clinic on target choosen deployment environment.</p>
-<p>in the Admin Web UI, will be an option to create new Clinic. once clicked, the admin will specify the Clinic name and the target deployment environment.
-for example Clinic <code class="docutils literal notranslate"><span class="pre">CT-Arad</span></code> on environment <code class="docutils literal notranslate"><span class="pre">Production</span></code>.</p>
+<p>in the Admin Web UI, will be an option to create new Clinic. once clicked, the admin will specify the Clinic name and the target deployment environment.</p>
+<p>example: Clinic <code class="docutils literal notranslate"><span class="pre">CT-Arad</span></code> on environment <code class="docutils literal notranslate"><span class="pre">Production</span></code>.</p>
+<p>I addition to this information the admin will specify the clinic’s admin phone and mail. and the end of the on-boarding procedure, the admin will get sms and mail with the environment information. the credentials details, will be temporary and <strong>will requires update after his first login</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Its important to enforce the password update in his first Login.</p>
+</div>
 <p>The Flow will run the following steps:</p>
 <ol class="arabic simple">
 <li><p>Create new EVS cluster</p></li>
@@ -96,16 +104,22 @@ for example Clinic <code class="docutils literal notranslate"><span class="pre">
 <li><p>open security-group and ports</p></li>
 <li><p>mount Load-balancer to the relevant services</p></li>
 <li><p>Create new User (admin) for the clinic in the User-service</p></li>
+<li><p>Create sub-domain for the clinic. (more information in <a class="reference internal" href="security.html#domains"><span class="std std-ref">Domains</span></a> section)</p></li>
+<li><p>push configuration from admin</p></li>
+<li><p>open Amplify for serving to the new environment with the new sub-domain</p></li>
 </ol>
-<div class="section" id="create-sub-domain-for-the-clinic">
-<h3>#. Create sub-domain for the clinic.<a class="headerlink" href="#create-sub-domain-for-the-clinic" title="Permalink to this headline">¶</a></h3>
+<p>this flow will run with terraform script on <a class="reference external" href="https://aws.amazon.com/lambda/">Lambda</a> context with specific permissions for on-boarding role.</p>
+<p>After creation, the platform admin will be able to see the clinic in the Admin page, and to manage this environment</p>
 </div>
 <div class="section" id="users-management">
 <h3>Users Management<a class="headerlink" href="#users-management" title="Permalink to this headline">¶</a></h3>
 </div>
-</div>
 <div class="section" id="settings">
-<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="windows-servers">
+<h2>Windows Servers<a class="headerlink" href="#windows-servers" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

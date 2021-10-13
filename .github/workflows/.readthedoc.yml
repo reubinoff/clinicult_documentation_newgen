@@ -14,23 +14,13 @@ jobs:
       with:
         docs-folder: "docs/"
 
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        pre-build-command: "apt-get update -y && apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended"
-        build-command: "make latexpdf"
-        docs-folder: "docs/"
-    
-    - name: TEST PDF
-      run: |
-        ls -l docs2
-        ls -l docs2/build
 
-    - uses: actions/upload-artifact@v1
-      with:
-        name: DocumentationHTML
-        path: docs/build/html/
+    # - uses: actions/upload-artifact@v1
+    #   with:
+    #     name: DocumentationHTML
+    #     path: docs/build/html/
 
-    
+
     - name: Commit documentation changes
       run: |
         git clone https://github.com/reubinoff/clinicult_documentation_newgen.git --branch gh-pages --single-branch gh-pages

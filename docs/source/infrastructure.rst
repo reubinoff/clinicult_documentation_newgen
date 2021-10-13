@@ -196,4 +196,10 @@ For each service the flow will be:
 #. Upload image to :ref:`ECR`
 #. Update :ref:`ECS` service with the new image
 
+The flow can be change according to the code.
+
+CI session will run only on the relevant code that changed. for example, if Service_a has changed, there is no need to run CI on service_b code.
+
+
+
 

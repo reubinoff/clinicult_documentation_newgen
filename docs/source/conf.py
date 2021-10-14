@@ -39,7 +39,6 @@ html_static_path = ["html/_static"]
 html_logo = "html/_static/clinicult.svg"
 html_theme_options = {
     "logo_only": True,
-    "display_version": False,
 }
 
 pygments_style = "sphinx"

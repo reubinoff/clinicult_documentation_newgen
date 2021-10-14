@@ -54,7 +54,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#global-settings">Global settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-lists">Data Lists</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#languages">Languages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notifications">Notifications</a></li>
 </ul>
 </li>
@@ -208,10 +207,6 @@ for example, the clinic has feature that the <em>Doctor</em> will have option to
 <p>There will be an option to import Data lists from CSV file.</p>
 </div>
 </div>
-<div class="section" id="languages">
-<h3>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h3>
-<p>In the settings view, will be an option to translate words to multi-languege.</p>
-</div>
 <div class="section" id="notifications">
 <h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
 <p>All the Global settings will be stored in the services’s database. the data the relevant for the clinic, should be pushed to the clinic.</p>
@@ -240,9 +235,18 @@ for example, the clinic has feature that the <em>Doctor</em> will have option to
 </div>
 <div class="section" id="reports">
 <h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h2>
+<p>In Admin Management Service will be an option to Generate report on Global view. In addition, the admin will be able to filter the results and generate the report on single clinic also.</p>
+<p>The reports format will be in PDF or CVS.</p>
 </div>
 <div class="section" id="windows-servers">
 <h2>Windows Servers<a class="headerlink" href="#windows-servers" title="Permalink to this headline">¶</a></h2>
+<p>To Integrate Clinicult platform to another services that don’t support WEB API, we have option to send data from windows host machine.</p>
+<p>The data the exists on S3 can be shared with those applications. when new file will be added/updated/deleted the windows machine will get notification from SNS that has S3 statues updates.</p>
+<p>the process will download the changed data from s3 and will send it to the proper service <strong>outside</strong> clinicult platform.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Maccami integration is the current use case for this machine</p>
+</div>
 </div>
 </div>
 

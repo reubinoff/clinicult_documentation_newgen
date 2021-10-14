@@ -150,10 +150,6 @@ and the response will be:
  
 
 
-Languages
-==================
-In the settings view, will be an option to translate words to multi-languege. 
-
 
 Notifications
 ==================
@@ -189,7 +185,22 @@ In this case the *Topic* of this message is ``SettingsTopic``, so only the :ref:
 ******************
 Reports
 ******************
+In Admin Management Service will be an option to Generate report on Global view. In addition, the admin will be able to filter the results and generate the report on single clinic also.
+
+The reports format will be in PDF or CVS. 
+
 
 ******************
 Windows Servers
 ******************
+
+To Integrate Clinicult platform to another services that don't support WEB API, we have option to send data from windows host machine.
+
+The data the exists on S3 can be shared with those applications. when new file will be added/updated/deleted the windows machine will get notification from SNS that has S3 statues updates.
+
+the process will download the changed data from s3 and will send it to the proper service **outside** clinicult platform.
+
+.. note::
+
+     Maccami integration is the current use case for this machine
+ 

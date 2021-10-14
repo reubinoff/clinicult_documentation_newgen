@@ -72,6 +72,10 @@ for example, if we will need to create medical file, Most of the data on the pat
 
 In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the :ref:`Visits Service`.
 
+Templates Management
+-----------------
+TBD
+
 
 API gateway
 ==================
@@ -194,3 +198,9 @@ the service parse this Token and check the permissions. example for parsing and 
     Token expiration will be 2 weeks
 
 More information on the Token and security you can find in :ref:`Authentication` chapter
+
+
+******************
+Reports
+******************
+TBD

@@ -210,11 +210,32 @@ for example, the clinic has feature that the <em>Doctor</em> will have option to
 </div>
 <div class="section" id="languages">
 <h3>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h3>
-<p>sd</p>
+<p>In the settings view, will be an option to translate words to multi-languege.</p>
 </div>
 <div class="section" id="notifications">
 <h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
-<p>SNS</p>
+<p>All the Global settings will be stored in the services’s database. the data the relevant for the clinic, should be pushed to the clinic.</p>
+<p>Cutrently there will be <strong>no option to send requests from the admin to the clinics</strong> duw to security and performance. hence, we will send notifications to the clinic about changes in the <a class="reference internal" href="infrastructure.html#sns"><span class="std std-ref">SNS</span></a> mechanisim.</p>
+<p>for example, the Admin can send a message:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;Type&quot; : &quot;ConfigurationDataListUpdate&quot;,
+    &quot;MessageId&quot; : &quot;165545c9-2a5c-472c-8df2-7ff2be2b3b1b&quot;,
+    &quot;Token&quot; : &quot;2336412f37...&quot;,
+    &quot;TopicArn&quot; : &quot;arn:aws:sns:us-west-2:123456789012:Clinic-X-SettingsTopic&quot;,
+    &quot;Message&quot; : &quot;{ &quot;cities&quot;: [ &quot;Tel-Aviv&quot;, &quot;Jerusalem&quot;, &quot;Hadera&quot;]}&quot;,
+    &quot;SubscribeURL&quot; : &quot;https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&amp;TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&amp;Token=2336412f37...&quot;,
+    &quot;Timestamp&quot; : &quot;2012-04-26T20:45:04.751Z&quot;,
+    &quot;SignatureVersion&quot; : &quot;1&quot;,
+    &quot;Signature&quot; : &quot;EXAMPLEpH+DcEwjAPg8O9mY8dReBSwksfg2S7WKQcikcNKWLQjwu6A4VbeS0QHVCkhRS7fUQvi2egU3N858fiTDN6bkkOxYDVrY0Ad8L10Hs3zH81mtnPk5uvvolIC1CXGu43obcgFxeL3khZl8IKvO61GWB6jI9b5+gLPoBc1Q=&quot;,
+    &quot;SigningCertURL&quot; : &quot;https://sns.us-west-2.amazonaws.com/SimpleNotificationService-f3ecfb7224c7233fe7bb5f59f96de52f.pem&quot;
+}
+</pre></div>
+</div>
+<p>In this case the <em>Topic</em> of this message is <code class="docutils literal notranslate"><span class="pre">SettingsTopic</span></code>, so only the <a class="reference internal" href="services.html#clinic-management-service"><span class="std std-ref">Clinic Management Service</span></a> in cluster <code class="docutils literal notranslate"><span class="pre">Clinic-X</span></code> will get this message.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Global configuration change, or defulat value change, the message will be sent to all the clinics (aka broadcast)</p>
+</div>
 </div>
 </div>
 <div class="section" id="reports">

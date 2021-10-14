@@ -75,7 +75,11 @@ In Addition, this service will hold the current visit of the patient. once the P
 
 Clinic Management Service
 ==================
-Templates Management
+All the clinic general data will be managed in this service. For example global clinic configuration. we can take for an instance the language of the clinic. this value can be used by the Client side to render the right language.
+
+The data from the :ref:`admin_management_services` will be pushed by the :ref:`SNS` when update will be applied.
+
+More information on :ref:`Admin Management Services` updated you can find in the :ref:`Notifications` part.
 
 
 

@@ -11,7 +11,7 @@ Environment Isolation
 ******************
 Each clinic in the platform will run on seperate :ref:`ECS` cluster. Each cluster will has seperate subnet in his VPC. there will be know open ports between clinic's subnets.
 
-Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during :ref:`Clinic Onboarding` time.
+Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during :ref:`Onboarding` time.
 the access from the cluster to the database, will be from Security-group that will define access from the Cluster to the spsific database. each service will have his own security-group to access his own database.
 hence, Only the relevant service can access the database.
 
@@ -145,6 +145,6 @@ Resources
 ==================
 All Aws Resource will be created from Terraform. this means that Terraform will have an Account with AWS Access keys the grant him permissions to create resources in AWS account.
 
-In addition, we will have option to create new environment in :ref:`Clinic Onboarding` session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
+In addition, we will have option to create new environment in :ref:`Onboarding` session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
 the grantted permissions will be from seperate account and will have only the required permissions **only**.
 

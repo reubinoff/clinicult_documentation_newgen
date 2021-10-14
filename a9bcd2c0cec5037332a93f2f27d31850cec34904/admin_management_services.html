@@ -44,11 +44,21 @@
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Admin Management Services</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#clinic-management">Clinic Management</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#clinic-onboarding">Clinic Onboarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#onboarding">Onboarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-actions">Clinic Actions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#users-management">Users Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-labeling">Clinic Labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-modules">Clinic Modules</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#global-settings">Global settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-lists">Data Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#languages">Languages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifications">Notifications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reports">Reports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows-servers">Windows Servers</a></li>
 </ul>
 </li>
@@ -85,8 +95,8 @@
 <h1>Admin Management Services<a class="headerlink" href="#admin-management-services" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="clinic-management">
 <h2>Clinic Management<a class="headerlink" href="#clinic-management" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="clinic-onboarding">
-<h3>Clinic Onboarding<a class="headerlink" href="#clinic-onboarding" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="onboarding">
+<h3>Onboarding<a class="headerlink" href="#onboarding" title="Permalink to this headline">¶</a></h3>
 <p>Clinics On-boarding will is interactive procedure in the system. this procedure may be invoke only by platform admin (aka root).
 the procedure will create new clinic in Clinicult platform.
 The on-boarding procedure can create a clinic on target choosen deployment environment.</p>
@@ -111,15 +121,91 @@ The on-boarding procedure can create a clinic on target choosen deployment envir
 <p>this flow will run with terraform script on <a class="reference external" href="https://aws.amazon.com/lambda/">Lambda</a> context with specific permissions for on-boarding role.</p>
 <p>After creation, the platform admin will be able to see the clinic in the Admin page, and to manage this environment</p>
 </div>
+<div class="section" id="clinic-actions">
+<h3>Clinic Actions<a class="headerlink" href="#clinic-actions" title="Permalink to this headline">¶</a></h3>
+<p>In the Admin Management services will be a dashboard to manage all the running clinics on AWS platform.
+the view will contains a table with all the clinics, and the status of the clinic. there will be three statues:</p>
+<ol class="arabic simple">
+<li><p><strong>Active</strong> - all services are up and running and the hostname route requests to the hosts.</p></li>
+<li><p><strong>Disable</strong> - Services are Down/removed and the data are still exists. the dome will not route requests to hosts.</p></li>
+<li><p><strong>Deleted</strong> - All active resources will be deleted but the data will be archived. the domain will be released</p></li>
+</ol>
+<p>in the dashboard, will be an option to update the clinic state.</p>
+<p>Furthermore, there will be an option to update the clinic settings. More information about the settings you can find in <a class="reference internal" href="#settings"><span class="std std-ref">Settings</span></a> chapter.</p>
+<p>Another Option will be to update the users for each clinic. more about users you can find in <a class="reference internal" href="#users-management"><span class="std std-ref">Users Management</span></a> section</p>
+</div>
 <div class="section" id="users-management">
 <h3>Users Management<a class="headerlink" href="#users-management" title="Permalink to this headline">¶</a></h3>
-<p>manage user per clinic</p>
+<p>Each Clinic has Users lists that have permission to access the clinic. Each User has his own role. the roles in the clinic are:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Admin</span></code> - manage the clinic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nurse</span></code> - handle the states for Nurse</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Doctor</span></code> - handle the state for doctor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Office</span></code> - manage the other states</p></li>
+</ol>
+<p>the admin will have an option to Create/Update/Delete users in the clinic. update Role of user or Deleting a user will be take place only in those conditions:</p>
+<ol class="arabic simple">
+<li><p>User has logged out and logged back in</p></li>
+<li><p>expiration time perioed has expired</p></li>
+</ol>
+<p>Those conditions are due to token management mechanisim.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can enforce attention list per service on modified users. but its not a must for phase 1</p>
+</div>
+</div>
+<div class="section" id="clinic-labeling">
+<h3>Clinic Labeling<a class="headerlink" href="#clinic-labeling" title="Permalink to this headline">¶</a></h3>
+<p>Each Clinic can customize the view of the clinic’s UI. for example <cite>clinic Logo</cite>.
+there will be a view in the clinic to upload or remove files that add client modification.</p>
+<p>If not file has added, there will be some defaults to use them in the clients.</p>
+</div>
+<div class="section" id="clinic-modules">
+<h3>Clinic Modules<a class="headerlink" href="#clinic-modules" title="Permalink to this headline">¶</a></h3>
+<p>Each clinic will have some Modules that may be use. for example:</p>
+<ol class="arabic simple">
+<li><p>Calendar</p></li>
+<li><p>Family care</p></li>
+<li><p>etc.</p></li>
+</ol>
+<p>Each module will have an option to enable or disable from the clinic view.</p>
+</div>
 </div>
 <div class="section" id="settings">
-<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
-<p>one global setting as default
-each client will inherne this globakl and can be edit. button push to clinic</p>
+<h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="global-settings">
+<h3>Global settings<a class="headerlink" href="#global-settings" title="Permalink to this headline">¶</a></h3>
+<p>Here will be All the configuration for the platform. there will be 3 kinds of configurations:</p>
+<ol class="arabic simple">
+<li><p>Global Admin configuration - for example admin mail for SMS notifications</p></li>
+<li><p>Default Clinic configuration - default values for each config field</p></li>
+<li><p>Clinic configuration - config per clinic for example clinic Language</p></li>
+</ol>
+<p>The Clinic will use all the default configuration after the on-boarding phase. the platform Admin will have the option to updat this default values in the clinic view.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The clinic configuration will be in the Clinic view and the other configuration will have dofferent global view on the admin management service client.</p>
 </div>
+</div>
+<div class="section" id="data-lists">
+<h3>Data Lists<a class="headerlink" href="#data-lists" title="Permalink to this headline">¶</a></h3>
+<p>s</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There will be an option to import Data lists from CSV file.</p>
+</div>
+</div>
+<div class="section" id="languages">
+<h3>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h3>
+<p>sd</p>
+</div>
+<div class="section" id="notifications">
+<h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
+<p>SNS</p>
+</div>
+</div>
+<div class="section" id="reports">
+<h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="windows-servers">
 <h2>Windows Servers<a class="headerlink" href="#windows-servers" title="Permalink to this headline">¶</a></h2>

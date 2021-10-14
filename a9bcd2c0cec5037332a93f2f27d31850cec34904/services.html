@@ -48,7 +48,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#admin-web-service">Admin WEB Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#admin-management-services">Admin Management Services</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#templates-management">Templates Management</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#fhir-api">FHIR API</a></li>
 </ul>
@@ -63,6 +66,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rbac">RBAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reports">Reports</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
@@ -153,6 +157,10 @@ in this case when Patient is in service now, the historic visits will be served 
 <p>This Service will serve the Patient information. personal and medical.
 for example, if we will need to create medical file, Most of the data on the patient will be taken from this service.</p>
 <p>In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the <a class="reference internal" href="#visits-service"><span class="std std-ref">Visits Service</span></a>.</p>
+<div class="section" id="templates-management">
+<h4>Templates Management<a class="headerlink" href="#templates-management" title="Permalink to this headline">¶</a></h4>
+<p>TBD</p>
+</div>
 </div>
 <div class="section" id="api-gateway">
 <h3>API gateway<a class="headerlink" href="#api-gateway" title="Permalink to this headline">¶</a></h3>
@@ -251,6 +259,10 @@ this Token will include his permissions in the system.</p>
 <p>Token expiration will be 2 weeks</p>
 </div>
 <p>More information on the Token and security you can find in <a class="reference internal" href="security.html#authentication"><span class="std std-ref">Authentication</span></a> chapter</p>
+</div>
+<div class="section" id="reports">
+<h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
 </div>
 </div>
 

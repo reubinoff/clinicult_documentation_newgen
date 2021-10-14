@@ -95,7 +95,7 @@ the protection has couple of security layers.</p>
 <div class="section" id="environment-isolation">
 <h2>Environment Isolation<a class="headerlink" href="#environment-isolation" title="Permalink to this headline">¶</a></h2>
 <p>Each clinic in the platform will run on seperate <a class="reference internal" href="infrastructure.html#ecs"><span class="std std-ref">ECS</span></a> cluster. Each cluster will has seperate subnet in his VPC. there will be know open ports between clinic’s subnets.</p>
-<p>Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during <a class="reference internal" href="admin_management_services.html#clinic-onboarding"><span class="std std-ref">Clinic Onboarding</span></a> time.
+<p>Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during <a class="reference internal" href="admin_management_services.html#onboarding"><span class="std std-ref">Onboarding</span></a> time.
 the access from the cluster to the database, will be from Security-group that will define access from the Cluster to the spsific database. each service will have his own security-group to access his own database.
 hence, Only the relevant service can access the database.</p>
 <p>We will have 3 kinds of environemnts:</p>
@@ -184,7 +184,7 @@ the base route will be for example <code class="docutils literal notranslate"><s
 <div class="section" id="resources">
 <h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
 <p>All Aws Resource will be created from Terraform. this means that Terraform will have an Account with AWS Access keys the grant him permissions to create resources in AWS account.</p>
-<p>In addition, we will have option to create new environment in <a class="reference internal" href="admin_management_services.html#clinic-onboarding"><span class="std std-ref">Clinic Onboarding</span></a> session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
+<p>In addition, we will have option to create new environment in <a class="reference internal" href="admin_management_services.html#onboarding"><span class="std std-ref">Onboarding</span></a> session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
 the grantted permissions will be from seperate account and will have only the required permissions <strong>only</strong>.</p>
 </div>
 </div>

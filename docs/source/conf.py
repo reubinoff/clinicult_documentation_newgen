@@ -36,7 +36,7 @@ templates_path = ["_templates"]
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["html/_static"]
-html_logo = "html/_static/a.png"
+html_logo = "html/_static/clinicult.svg"
 html_theme_options = {
     "logo_only": True,
     "display_version": False,

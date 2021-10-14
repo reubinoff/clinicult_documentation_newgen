@@ -39,6 +39,7 @@ html_static_path = ["_static"]
 html_logo = "a.png"
 html_theme_options = {
     "logo_only": True,
+    "display_version": False,
 }
 
 pygments_style = "sphinx"

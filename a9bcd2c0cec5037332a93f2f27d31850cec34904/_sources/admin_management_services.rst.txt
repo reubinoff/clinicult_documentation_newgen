@@ -122,7 +122,27 @@ The Clinic will use all the default configuration after the on-boarding phase. t
 
 Data Lists
 ==================
-s
+In Admin Management Service there will be an option to manage al UI Lists data. 
+for example, the clinic has feature that the *Doctor* will have option to give medicen to the *patient*. the Doctor can select the medicen from drop down list. the list data can be managed from this screen.
+
+The Admin will have option to add ``list data`` argument. Each Data list will have name. this name and list data will be pushed to the services, and can be rendered in the UI by the name.
+
+For example: Admin has added new Data list of ``Cities``. the Admin service push the data to the Clinic management service. and now the client can get it.
+
+Client: ``app.clinic_name.clinicult2.com`` will send request to:
+
+.. code-block:: console
+
+    {GET} managment.clinic_name.clinicult2.com/data?name=cities
+
+and the response will be:
+
+.. code-block:: json
+    
+    [
+        "Tel-Aviv", "Jerusalem", "Hadera"
+    ]
+
 
 .. note::
 

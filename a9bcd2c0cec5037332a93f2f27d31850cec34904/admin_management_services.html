@@ -189,7 +189,20 @@ there will be a view in the clinic to upload or remove files that add client mod
 </div>
 <div class="section" id="data-lists">
 <h3>Data Lists<a class="headerlink" href="#data-lists" title="Permalink to this headline">¶</a></h3>
-<p>s</p>
+<p>In Admin Management Service there will be an option to manage al UI Lists data.
+for example, the clinic has feature that the <em>Doctor</em> will have option to give medicen to the <em>patient</em>. the Doctor can select the medicen from drop down list. the list data can be managed from this screen.</p>
+<p>The Admin will have option to add <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">data</span></code> argument. Each Data list will have name. this name and list data will be pushed to the services, and can be rendered in the UI by the name.</p>
+<p>For example: Admin has added new Data list of <code class="docutils literal notranslate"><span class="pre">Cities</span></code>. the Admin service push the data to the Clinic management service. and now the client can get it.</p>
+<p>Client: <code class="docutils literal notranslate"><span class="pre">app.clinic_name.clinicult2.com</span></code> will send request to:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">{GET} managment.clinic_name.clinicult2.com/data?name=cities</span>
+</pre></div>
+</div>
+<p>and the response will be:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;Tel-Aviv&quot;</span><span class="p">,</span> <span class="s2">&quot;Jerusalem&quot;</span><span class="p">,</span> <span class="s2">&quot;Hadera&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There will be an option to import Data lists from CSV file.</p>

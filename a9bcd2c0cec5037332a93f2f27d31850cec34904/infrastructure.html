@@ -25,7 +25,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Clinicult
+            <a href="index.html"><img src="_static/a.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -152,7 +152,7 @@ For example, Service visits, will write his data to</p>
 for each Clinic will be a dedicated subnet in the environment VPC. this way, we will have 3 different VPCs, for development, staging and production. and each clinic will have seperate subnet in the VPC.</p>
 <p>Amazon Api Gateway may be integrated with ECS. more information may be found in <a class="reference external" href="https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-with-microservices-deployed-on-amazon-ecs/">this guide</a>.</p>
 <p>All the clusters (aka clinics) will be accessed from the Api gateway <strong>only</strong>, and will be secured with TLS certivficate.
-In addition, the clusters will also have subscription channel to the <a class="reference internal" href="#sns"><span class="std std-ref">SNS</span></a>. this way the <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> can push config changes or other updates to the clinic.</p>
+In addition, the clusters will also have subscription channel to the <a class="reference internal" href="#sns"><span class="std std-ref">SNS</span></a>. this way the <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> can push config changes or other updates to the clinic.</p>
 </div>
 <div class="section" id="ecr">
 <h3>ECR<a class="headerlink" href="#ecr" title="Permalink to this headline">¶</a></h3>
@@ -174,8 +174,8 @@ In addition, every deploy environment (stage, dev, prod) will have different tag
 <h3>SNS<a class="headerlink" href="#sns" title="Permalink to this headline">¶</a></h3>
 <p>SNS is a distributed publish-subscribe system. Messages are pushed to subscribers as and when they are sent by publishers to SNS.
 Amazon SNS is a fast, flexible, fully managed push notification service that lets you send individual messages or to bulk messages to large numbers of recipients.</p>
-<p>The <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> will have option to notify the clinics about configuration change or other notification with the SNS.
-Each service in the clinic will option to subscribe on <a class="reference internal" href="services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> notifications.
+<p>The <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> will have option to notify the clinics about configuration change or other notification with the SNS.
+Each service in the clinic will option to subscribe on <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> notifications.
 Each message will have different area of intrest (aka Topic). each service will subscribe to the relevant Topic.
 For example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

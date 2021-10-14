@@ -1,5 +1,5 @@
 Welcome to Clinicult New-Gen documentation!
-===================================
+===============================================
 
 **Clinicult** is a Electric Medical Records application.
 

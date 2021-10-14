@@ -6,9 +6,9 @@ Clinicut patform has medical sensetive data, hence we need to nesure that all ou
 the protection has couple of security layers.
 
 
-******************
+***********************
 Environment Isolation
-******************
+***********************
 Each clinic in the platform will run on seperate :ref:`ECS` cluster. Each cluster will has seperate subnet in his VPC. there will be know open ports between clinic's subnets.
 
 Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during :ref:`Onboarding` time.
@@ -97,7 +97,7 @@ in addition the admin will have those domains:
 
 
 ******************
-AWS
+AWS Platform
 ******************
 
 IAM

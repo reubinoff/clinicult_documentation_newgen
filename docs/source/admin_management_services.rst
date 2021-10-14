@@ -1,6 +1,6 @@
-#############
+##########################
 Admin Management Services 
-#############
+##########################
 
 
 ******************
@@ -166,7 +166,7 @@ for example, the Admin can send a message:
         "MessageId" : "165545c9-2a5c-472c-8df2-7ff2be2b3b1b",
         "Token" : "2336412f37...",
         "TopicArn" : "arn:aws:sns:us-west-2:123456789012:Clinic-X-SettingsTopic",
-        "Message" : "{ "cities": [ "Tel-Aviv", "Jerusalem", "Hadera"]}",
+        "Message" : "{ \"cities\": [ \"Tel-Aviv\", \"Jerusalem\", \"Hadera\"]}",
         "SubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-west-2:123456789012:MyTopic&Token=2336412f37...",
         "Timestamp" : "2012-04-26T20:45:04.751Z",
         "SignatureVersion" : "1",
@@ -183,7 +183,7 @@ In this case the *Topic* of this message is ``SettingsTopic``, so only the :ref:
  
 
 ******************
-Reports
+Admin Reports
 ******************
 In Admin Management Service will be an option to Generate report on Global view. In addition, the admin will be able to filter the results and generate the report on single clinic also.
 

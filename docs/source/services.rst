@@ -26,7 +26,7 @@ In Each Clinic there will be 4 Role to access the clinic:
 
 
 Authentication Service
-==================
+==========================
 Authentication Methid will be implemented in these services. This service can be 3rd party service that can be integrated with out platform. 
 for example: `Auth0 <https://auth0.com/>`_
 
@@ -47,7 +47,7 @@ Admin WEB Service
 This Services will serve the admin web client. same as the :ref:`Clinic WEB Service`.
 
 
-Admin Management Services
+Admin Management Service
 ====================================
 This server will host all the API and queries that the admin client needs.
 the main idea is that this server will hold only the relevant data for admin **only**, and will just proxy the requests to other services for the additional data.
@@ -74,10 +74,10 @@ In Addition, this service will hold the current visit of the patient. once the P
 
 
 Clinic Management Service
-==================
+=============================
 All the clinic general data will be managed in this service. For example global clinic configuration. we can take for an instance the language of the clinic. this value can be used by the Client side to render the right language.
 
-The data from the :ref:`admin_management_services` will be pushed by the :ref:`SNS` when update will be applied.
+The data from the :doc:`admin_management_services` will be pushed by the :ref:`SNS` when update will be applied.
 
 More information on :ref:`Admin Management Services` updated you can find in the :ref:`Notifications` part.
 
@@ -147,7 +147,7 @@ Example, the last patients' historic visits in the clinic.
 
 
 ******************
-Schema
+Services Schema
 ******************
 .. image:: imgs/services.png
     :width: 400
@@ -169,9 +169,9 @@ Role can be implemented as:
 .. code-block:: json
 
     [
-        'clinicult:visits:read',
-        'clinicult:patient:write'
-        'clinicult:user:*'
+        "clinicult:visits:read",
+        "clinicult:patient:write",
+        "clinicult:user:*"
     ]
 
 in this Example, this permissions says that:

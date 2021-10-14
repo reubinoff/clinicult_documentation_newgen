@@ -1,11 +1,11 @@
-#############
+##########################
 Infrastructure 
-#############
+##########################
 
 Clinicult 2.0 Services will be deployed on AWS platform. The deployment will be on `Kubernetes <https://kubernetes.io/>`_.
 in addition to the services Clinicult 2.0 will have some storage for files and historic data.
 
-All platform Code will be managed by Git on `Github <https://github.com>`_.
+All platform Code will be managed by Git on `Github <https://github.com>`__.
 
 Fully CI/CD will be part of the development cycle to ensure the platform Quality. the CI/CD engine will be `Github-Actions <https://github.com/features/actions>`_.
 
@@ -187,14 +187,14 @@ Schema
 ******************
 Source Control
 ******************
-All Code services will be managed by Source control. our code will be on `Github <https://github.com>`_.
+All Code services will be managed by Source control. our code will be on `Github <https://github.com>`__.
 the entire code will be in single repository for easy managment and development cycle.
 
 
 
-******************
+****************************
 Continous Integration
-******************
+****************************
 The entire Continous Integration will be implemented in `Github-Actions <https://github.com/features/actions>`_.
 
 For each service the flow will be:

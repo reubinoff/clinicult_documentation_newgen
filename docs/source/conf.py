@@ -6,8 +6,8 @@ project = "Clinicult"
 copyright = "2021, Clinicult"
 author = "Moshe Reubinoff"
 
-release = "0.1"
-version = "0.1.0"
+release = "0.2"
+version = "1.0.1"
 
 # -- General configuration
 import os
@@ -35,6 +35,12 @@ templates_path = ["_templates"]
 # -- Options for HTML output
 
 html_theme = "sphinx_rtd_theme"
+html_static_path = ["_static"]
+html_logo = "a.png"
+html_theme_options = {
+    "logo_only": True,
+}
+
 pygments_style = "sphinx"
 
 # -- Options for EPUB output

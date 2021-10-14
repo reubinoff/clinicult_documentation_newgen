@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security &mdash; Clinicult 0.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interfaces" href="interfaces.html" />
+    <link rel="prev" title="Admin Management Services" href="admin_management_services.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/clinicult.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_management_services.html">Admin Management Services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment-isolation">Environment Isolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn">VPN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssl">SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domains">Domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aws-platform">AWS Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iam">IAM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#access-keys">Access keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring">Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Clinicult</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Security</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/security.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security">
+<h1>Security<a class="headerlink" href="#security" title="Permalink to this headline"></a></h1>
+<p>Clinicut patform has medical sensetive data, hence we need to nesure that all our data is safe and protected.
+the protection has couple of security layers.</p>
+<section id="environment-isolation">
+<h2>Environment Isolation<a class="headerlink" href="#environment-isolation" title="Permalink to this headline"></a></h2>
+<p>Each clinic in the platform will run on seperate <a class="reference internal" href="infrastructure.html#ecs"><span class="std std-ref">ECS</span></a> cluster. Each cluster will has seperate subnet in his VPC. there will be know open ports between clinic’s subnets.</p>
+<p>Each Clinic will have different database per service. All the databases can be on the same RDS server. the database name will be generated automaticlly during <a class="reference internal" href="admin_management_services.html#onboarding"><span class="std std-ref">Onboarding</span></a> time.
+the access from the cluster to the database, will be from Security-group that will define access from the Cluster to the spsific database. each service will have his own security-group to access his own database.
+hence, Only the relevant service can access the database.</p>
+<p>We will have 3 kinds of environemnts:</p>
+<ol class="arabic simple">
+<li><p>Production</p></li>
+<li><p>Staging</p></li>
+<li><p>Development</p></li>
+</ol>
+<p>Clinic with the same name can be exists on each environment, but those clusters should be isolated.</p>
+<p>the clinics will share only those components:</p>
+<ol class="arabic simple">
+<li><p>Load balancer</p></li>
+<li><p>Amplify Client</p></li>
+<li><p>SNS</p></li>
+</ol>
+<p>Once we will keep those ruls, the data will be isolated and secured.</p>
+</section>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline"></a></h2>
+<p>Each Clinic will be protected with different authentication mechanisim. means that each clinic will have different users and different admin user.
+All authentication flow will be managed by <a class="reference internal" href="services.html#user-service"><span class="std std-ref">User Service</span></a>. the authentication identification will be implemented with <a class="reference external" href="https://auth0.com/">Auth0</a>.
+The <a class="reference internal" href="services.html#user-service"><span class="std std-ref">User Service</span></a> will manage the Users in the clinic, and the <a class="reference internal" href="services.html#authentication-service"><span class="std std-ref">Authentication Service</span></a> will manage the access flow. this way all clinic tokens will be safe.</p>
+<img alt="Authentication" src="_images/auth.png" />
+<p>More information about Oauth2 flow, you can find in <a class="reference external" href="https://auth0.com/docs/authorization/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce">This documentation</a></p>
+</section>
+<section id="vpn">
+<h2>VPN<a class="headerlink" href="#vpn" title="Permalink to this headline"></a></h2>
+<p>To open access to the internal ip within the cluster, we will need to create VPN access <strong>per deployment environment</strong>.</p>
+<p>Each Environemnt will have different VPN server. we will use <a class="reference external" href="https://openvpn.net/">OpenVPN</a> to implement the server side.</p>
+<p>the Only ports that will be open is the web server, and it will be open to the <a class="reference internal" href="services.html#api-gateway"><span class="std std-ref">API gateway</span></a> <strong>Only</strong>, and the API gateway will be open to the Load Balancer <strong>Only</strong>.
+The Load balancer will be open to the internet for incomming connection from the <em>Amplify Client</em>.</p>
+</section>
+<section id="ssl">
+<h2>SSL<a class="headerlink" href="#ssl" title="Permalink to this headline"></a></h2>
+<p>All the Web services will serve in Https/TLS <strong>Only</strong>. the Certificates will be generated from AWS <a class="reference external" href="https://aws.amazon.com/certificate-manager/">Certificate manager</a>.</p>
+<p>The client Certificate will be generated from <a class="reference external" href="https://aws.amazon.com/amplify/">AWS Amplify</a>.</p>
+</section>
+<section id="domains">
+<h2>Domains<a class="headerlink" href="#domains" title="Permalink to this headline"></a></h2>
+<p>The Domain will be managed In Route53.
+the base route will be for example <code class="docutils literal notranslate"><span class="pre">clinicult2.com</span></code></p>
+<p>Each Clinic will have seperate domains with ssl Certificates. the domain production templates:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service_name.clinic_name.clinicult2.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.clinic_name.clinicult2.com</span></code></p></li>
+</ol>
+<p>for the other deployment environemnts the domain templates:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service_name.clinic_name.&lt;environment&gt;.clinicult2.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.clinic_name.&lt;environment&gt;.clinicult2.com</span></code></p></li>
+</ol>
+<p>for example: <code class="docutils literal notranslate"><span class="pre">app.ct-arad.staging.clinicult2.com</span></code></p>
+<p>The load-balancer will route the requests to <code class="docutils literal notranslate"><span class="pre">X.clinic_name.clinicult2.com</span></code> to the relevant cluster</p>
+<p>in addition the admin will have those domains:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app.admin.clinicult2.com</span></code> - client</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src.admin.clinicult2.com</span></code> - server</p></li>
+</ol>
+</section>
+<section id="aws-platform">
+<h2>AWS Platform<a class="headerlink" href="#aws-platform" title="Permalink to this headline"></a></h2>
+<section id="iam">
+<h3>IAM<a class="headerlink" href="#iam" title="Permalink to this headline"></a></h3>
+<p>You use an access key (an access key ID and secret access key) to make programmatic requests to AWS. However, do not use your AWS account root user access key. The access key for your AWS account root user gives full access to all your resources for all AWS services, including your billing information. You cannot reduce the permissions associated with your AWS account root user access key.</p>
+<p>Therefore, protect your root user access key like you would your credit card numbers or any other sensitive secret. Here are some ways to do that:</p>
+<p>We strongly recommend that you do not use the root user for your everyday tasks, even the administrative ones. Instead, use your root user credentials only to <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">create your IAM admin</a> user. Then securely lock away the root user credentials and use them to perform only a few account and service management tasks. For everyday tasks, do not use your IAM admin user. Instead, <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#delegate-using-roles">use roles to delegate permissions</a>.</p>
+<p>If you do have an access key for your AWS account root user, delete it. If you must keep it, rotate (change) the access key regularly. To delete or rotate your root user access keys, go to the My Security Credentials page in the AWS Management Console and sign in with your account’s email address and password. You can manage your access keys in the Access keys section. For more information about rotating access keys, see Rotating access keys.</p>
+<p>Never share your AWS account root user password or access keys with anyone. The remaining sections of this document discuss various ways to avoid having to share your AWS account root user credentials with other users. They also explain how to avoid having to embed them in an application.</p>
+<p>Use a strong password to help protect account-level access to the AWS Management Console.</p>
+<p>Enable AWS multi-factor authentication (MFA) on your AWS account root user account. For more information, see Using multi-factor authentication (MFA) in <a class="reference external" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html">AWS</a>.</p>
+<section id="access-keys">
+<h4>Access keys<a class="headerlink" href="#access-keys" title="Permalink to this headline"></a></h4>
+<p>Access keys provide programmatic access to AWS. Do not embed access keys within unencrypted code or share these security credentials between users in your AWS account. For applications that need access to AWS, configure the program to retrieve temporary security credentials using an IAM role. To allow your users individual programmatic access, create an IAM user with personal access keys.</p>
+</section>
+<section id="monitoring">
+<h4>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline"></a></h4>
+<p>You can use logging features in AWS to determine the actions users have taken in your account and the resources that were used. The log files show the time and date of actions, the source IP for an action, which actions failed due to inadequate permissions, and more.</p>
+<p>Logging features are available in the following AWS services:</p>
+<p><a class="reference external" href="https://aws.amazon.com/cloudfront/">Amazon CloudFront</a> – Logs user requests that CloudFront receives. For more information, see <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html">Access Logs</a> in the Amazon CloudFront Developer Guide.</p>
+<p><a class="reference external" href="https://aws.amazon.com/cloudtrail/">AWS CloudTrail</a> – Logs AWS API calls and related events made by or on behalf of an AWS account. For more information, see the AWS CloudTrail User Guide.</p>
+<p><a class="reference external" href="https://aws.amazon.com/cloudwatch/">Amazon CloudWatch</a> – Monitors your AWS Cloud resources and the applications you run on AWS. You can set alarms in CloudWatch based on metrics that you define. For more information, see the Amazon <a class="reference external" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/">CloudWatch User Guide</a>.</p>
+<p><a class="reference external" href="https://aws.amazon.com/config/">AWS Config</a> – Provides detailed historical information about the configuration of your AWS resources, including your IAM users, user groups, roles, and policies. For example, you can use AWS Config to determine the permissions that belonged to a user or user group at a specific time. For more information, see the <a class="reference external" href="https://docs.aws.amazon.com/config/latest/developerguide/">AWS Config Developer Guide</a>.</p>
+<p><a class="reference external" href="https://aws.amazon.com/s3/">Amazon Simple Storage Service (Amazon S3)</a> – Logs access requests to your Amazon S3 buckets. For more information, see Server Access Logging in the Amazon Simple Storage Service User Guide.</p>
+</section>
+</section>
+<section id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline"></a></h3>
+<p>All Aws Resource will be created from Terraform. this means that Terraform will have an Account with AWS Access keys the grant him permissions to create resources in AWS account.</p>
+<p>In addition, we will have option to create new environment in <a class="reference internal" href="admin_management_services.html#onboarding"><span class="std std-ref">Onboarding</span></a> session. this flow create new resources in AWS account. hence, the host that run this routine, will have permission to create those resource.
+the grantted permissions will be from seperate account and will have only the required permissions <strong>only</strong>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="admin_management_services.html" class="btn btn-neutral float-left" title="Admin Management Services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="interfaces.html" class="btn btn-neutral float-right" title="Interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Clinicult.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

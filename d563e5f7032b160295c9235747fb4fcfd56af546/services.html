@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services &mdash; Clinicult 0.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Infrastructure" href="infrastructure.html" />
+    <link rel="prev" title="Scenarios" href="scenarios.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/clinicult.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#outlet">Outlet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-service">User Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-service">Authentication Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-web-service">Clinic WEB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-web-service">Admin WEB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-management-service">Admin Management Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visits-service">Visits Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patient-service">Patient Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clinic-management-service">Clinic Management Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-gateway">API gateway</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fhir-api">FHIR API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#communication">Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">Cache</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#services-schema">Services Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rbac">RBAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reports">Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_management_services.html">Admin Management Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Clinicult</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Services</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/services.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="services">
+<h1>Services<a class="headerlink" href="#services" title="Permalink to this headline"></a></h1>
+<p>In order to support high performance and simplicity Clinicult 2.0 will be developed as micro-services architecture.
+each service will have his own purpose and his own data.</p>
+<section id="outlet">
+<h2>Outlet<a class="headerlink" href="#outlet" title="Permalink to this headline"></a></h2>
+<section id="user-service">
+<h3>User Service<a class="headerlink" href="#user-service" title="Permalink to this headline"></a></h3>
+<p>This service will store all the information on the User that use the system. the information will include also the user permissions.
+in addition to the user permissions (Role / Group), these services will store all the personal information. for example, phone or mail.</p>
+<p>The service will not store his login credentials.
+all the tokens or credentials will be stored in the <a class="reference internal" href="#authentication-service"><span class="std std-ref">Authentication Service</span></a></p>
+<p>In Each Clinic there will be 4 Role to access the clinic:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Admin</span></code> - manage the clinic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nurse</span></code> - handle the states for Nurse</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Doctor</span></code> - handle the state for doctor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Office</span></code> - manage the other states</p></li>
+</ol>
+<p>Each user in the system can have <strong>more then one role</strong>.</p>
+</section>
+<section id="authentication-service">
+<h3>Authentication Service<a class="headerlink" href="#authentication-service" title="Permalink to this headline"></a></h3>
+<p>Authentication Methid will be implemented in these services. This service can be 3rd party service that can be integrated with out platform.
+for example: <a class="reference external" href="https://auth0.com/">Auth0</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The only entities that can talk with this service is the <a class="reference internal" href="#user-service"><span class="std std-ref">User Service</span></a> to update the user Role/Group, and the Client itslef for authentication</p>
+</div>
+</section>
+<section id="clinic-web-service">
+<h3>Clinic WEB Service<a class="headerlink" href="#clinic-web-service" title="Permalink to this headline"></a></h3>
+<p>This service will hold the client static files with some web servies that serve those files. for example, Nodejs with <a class="reference external" href="https://expressjs.com/">Express</a>.</p>
+<p>another option is to serve the Client site with <a class="reference external" href="https://aws.amazon.com/amplify/">AWS Amplify</a></p>
+</section>
+<section id="admin-web-service">
+<h3>Admin WEB Service<a class="headerlink" href="#admin-web-service" title="Permalink to this headline"></a></h3>
+<p>This Services will serve the admin web client. same as the <a class="reference internal" href="#clinic-web-service"><span class="std std-ref">Clinic WEB Service</span></a>.</p>
+</section>
+<section id="admin-management-service">
+<h3>Admin Management Service<a class="headerlink" href="#admin-management-service" title="Permalink to this headline"></a></h3>
+<p>This server will host all the API and queries that the admin client needs.
+the main idea is that this server will hold only the relevant data for admin <strong>only</strong>, and will just proxy the requests to other services for the additional data.</p>
+<p>More information on <a class="reference internal" href="admin_management_services.html"><span class="doc">Admin Management Services</span></a></p>
+</section>
+<section id="visits-service">
+<h3>Visits Service<a class="headerlink" href="#visits-service" title="Permalink to this headline"></a></h3>
+<p>This service will hold the historic Visits. The issue here is that the data of this service will increment over the time, so to keep our performance fast and robust, we will keep here only the historic and not the <strong>current</strong> visit.
+this services will also give an enhanced API to query on the historic visits.</p>
+<p>there is an option to accelerate the queries is to use some Cache to hole the most visited entries.
+example for implementation is <a class="reference external" href="https://www.geeksforgeeks.org/lru-cache-implementation/">LRU cache</a>  on Redis, to keep the visits per Patient.
+in this case when Patient is in service now, the historic visits will be served from the Cache instead of the Database.</p>
+</section>
+<section id="patient-service">
+<h3>Patient Service<a class="headerlink" href="#patient-service" title="Permalink to this headline"></a></h3>
+<p>This Service will serve the Patient information. personal and medical.
+for example, if we will need to create medical file, Most of the data on the patient will be taken from this service.</p>
+<p>In Addition, this service will hold the current visit of the patient. once the Patient finish his visit, the current visit will be reset and the current visist will be moved to the <a class="reference internal" href="#visits-service"><span class="std std-ref">Visits Service</span></a>.</p>
+</section>
+<section id="clinic-management-service">
+<h3>Clinic Management Service<a class="headerlink" href="#clinic-management-service" title="Permalink to this headline"></a></h3>
+<p>All the clinic general data will be managed in this service. For example global clinic configuration. we can take for an instance the language of the clinic. this value can be used by the Client side to render the right language.</p>
+<p>The data from the <a class="reference internal" href="admin_management_services.html"><span class="doc">Admin Management Services</span></a> will be pushed by the <a class="reference internal" href="infrastructure.html#sns"><span class="std std-ref">SNS</span></a> when update will be applied.</p>
+<p>More information on <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> updated you can find in the <a class="reference internal" href="admin_management_services.html#notifications"><span class="std std-ref">Notifications</span></a> part.</p>
+</section>
+<section id="api-gateway">
+<h3>API gateway<a class="headerlink" href="#api-gateway" title="Permalink to this headline"></a></h3>
+<p>API service that route all requests in the platform to his relevant service.
+the main reason to hold this service is that the only way to get into out platform is only through this service.
+more information about it you can find in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter.</p>
+<p>One of the Options to implement this service is with <a class="reference external" href="https://aws.amazon.com/api-gateway/">Amazon Api Gateway</a>.</p>
+<section id="fhir-api">
+<h4>FHIR API<a class="headerlink" href="#fhir-api" title="Permalink to this headline"></a></h4>
+<p>All the API calls (that contain medical data) meet FHIR standard.
+The API is written in <a class="reference external" href="https://www.hl7.org/fhir/http.html">FHIR V4 standard</a>.</p>
+</section>
+</section>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline"></a></h2>
+<section id="communication">
+<h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline"></a></h3>
+<p>In Clinicut 2.0 we will have couple of communication channels:</p>
+<ol class="arabic simple">
+<li><p>User client to the <a class="reference internal" href="#api-gateway"><span class="std std-ref">API gateway</span></a></p></li>
+<li><p>Admin client to the <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a></p></li>
+<li><p>Between the platform services</p></li>
+<li><p>Pub-Sub between <a class="reference internal" href="admin_management_services.html#admin-management-services"><span class="std std-ref">Admin Management Services</span></a> to the clinic clusters</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>API client is not relevant at this stage</p>
+</div>
+<p>By Design all the requests between the services and/or between the client to the services, will be threw REST API.
+All the calls between the Clients to the platform will be threw the <a class="reference internal" href="#api-gateway"><span class="std std-ref">API gateway</span></a> with <strong>https</strong> (<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5246">TLS</a>).
+the calls between the platform servies will be in <strong>http</strong> to the local dns name that the service will get from the process manager (<a class="reference external" href="https://kubernetes.io/">k8s</a>).</p>
+<p>more information about communication protocol in <a class="reference internal" href="security.html"><span class="doc">Security</span></a> chapter.</p>
+</section>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this headline"></a></h3>
+<p>Each Service in Clinicult 2.0 will have his own database. we will use <a class="reference external" href="https://www.mysql.com/">MySql</a> in version <a class="reference external" href="https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-26.html">8.X</a> to store the service data.
+All the databases can host on the same server, but will have separate schemas. for multi-Geo services, will be serve as multi-Geo redundancy.
+the meaning of that each service has his own data, is if we need to have API that will return an Object that have data from multiple services, the response servies (that get the API request) will aggregate te the full data from all of the services, and will return full request to the client.</p>
+</section>
+<section id="cache">
+<h3>Cache<a class="headerlink" href="#cache" title="Permalink to this headline"></a></h3>
+<p>Caching will be ready to serve the services. option for caches:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://redis.io/">Redis</a></p></li>
+<li><p><a class="reference external" href="https://www.google.com/aclk?sa=L&amp;ai=DChcSEwibgdTWyb3zAhVS53cKHRlUDlYYABAAGgJlZg&amp;ae=2&amp;sig=AOD64_3eWIyBu6dtM602se28yrqiAz9lgg&amp;q&amp;adurl&amp;ved=2ahUKEwj_kcvWyb3zAhVLDewKHSKAB-kQ0Qx6BAgCEAE">AWS Elastic Cache</a></p></li>
+</ol>
+<p>In both case the idea is to store only temporary data and not persistant. means that each data that stored in cache, can be clear and this will not impcat the system with data loss.
+Example, the last patients’ historic visits in the clinic.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>cache mechanisim is not needed for the first stage</p>
+</div>
+</section>
+</section>
+<section id="services-schema">
+<h2>Services Schema<a class="headerlink" href="#services-schema" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="_images/services.png"><img alt="Services Outlet" src="_images/services.png" style="width: 400px;" /></a>
+</section>
+<section id="rbac">
+<h2>RBAC<a class="headerlink" href="#rbac" title="Permalink to this headline"></a></h2>
+<p>Clinicult platform will implement Role-based-access-control. means that each user that communicate with the servicess will have to identify with the system with token that he get after Login phase.
+this Token will include his permissions in the system.</p>
+<p>Each service that read the Token will be able to read the permissions that the user have.</p>
+<p>Each service will map the API in the service to the relevant permissions. despite the <code class="docutils literal notranslate"><span class="pre">Login</span></code> and <code class="docutils literal notranslate"><span class="pre">Logout</span></code>, <strong>all the other Apis requires permissions</strong>.</p>
+<p>Role can be implemented as:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;clinicult:visits:read&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;clinicult:patient:write&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;clinicult:user:*&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>in this Example, this permissions says that:</p>
+<ol class="arabic simple">
+<li><p>User have <em>read</em> access to the visits data</p></li>
+<li><p>User have <em>write</em> + <em>read</em> access to the patient data</p></li>
+<li><p>User have full access (includes delete) to the user data</p></li>
+</ol>
+<p>the Toekn is send in Bearer Http Header.</p>
+<p>the service parse this Token and check the permissions. example for parsing and check experiration data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jwt.exceptions</span> <span class="kn">import</span> <span class="n">ExpiredSignatureError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+        <span class="n">token</span><span class="p">,</span>
+        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;my_super_secret&#39;</span><span class="p">,</span>
+        <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">header_data</span><span class="p">[</span><span class="s1">&#39;alg&#39;</span><span class="p">],</span> <span class="p">]</span>
+    <span class="p">)</span>
+<span class="k">except</span> <span class="n">ExpiredSignatureError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to decode the token, error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Token expiration will be 2 weeks</p>
+</div>
+<p>More information on the Token and security you can find in <a class="reference internal" href="security.html#authentication"><span class="std std-ref">Authentication</span></a> chapter</p>
+</section>
+<section id="reports">
+<h2>Reports<a class="headerlink" href="#reports" title="Permalink to this headline"></a></h2>
+<p>TBD</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scenarios.html" class="btn btn-neutral float-left" title="Scenarios" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="infrastructure.html" class="btn btn-neutral float-right" title="Infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Clinicult.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
